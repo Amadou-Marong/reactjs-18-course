@@ -1,36 +1,41 @@
 import './App.css'
 
-const firstBook = {
-  title : 'Atomic Habits',
-  author : 'James Clear',
-  img : '../public/images/book1.jpg'
-}
+const books = [
+  {
+    id: 1,
+    img : '../public/images/book1.jpg',
+    title : 'Atomic Habits',
+    author : 'James Clear'
+  },
+  {
+    id: 2,
+    img : '../public/images/book2.jpg',
+    title : 'The Power of Habit',
+    author : 'Charles Duhigg'
+  }
 
-const secondBook = {
-  title : 'The Power of Habit',
-  author : 'Charles Duhigg',
-  img : '../public/images/book2.jpg'
-}
+]
 
 const BookList = () => {
   return (
     <section className='booklist'>
-      <Book title={firstBook.title} author={firstBook.author} img={firstBook.img}>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, laboriosam? Omnis saepe, porro dolorum impedit sint quis amet fuga veritatis voluptate aliquid inventore assumenda rerum deleniti exercitationem provident facilis quisquam?</p>
-      </Book>
-      <Book title={secondBook.title} author={secondBook.author} img={secondBook.img}/>
+      {books.map((book) => {
+        const { id, img, title, author } = book
+        return <Book key={id} img={img} title={title} author={author} />
+      })}
     </section>
   )
 }
 
 
-const Book = ({title, author, img, children}) => {
+const Book = (props) => {
+  const {img, title, author } = props
+  console.log(props)
   return (
     <article className='book'>
-      <img src={img} alt={title}/>
+      <img src={img} alt={title} />
       <h1>{title}</h1>
       <h4>{author}</h4>
-      {children}
     </article>
   )
 }
