@@ -1,31 +1,37 @@
 import './App.css'
 
+const firstBook = {
+  title : 'Atomic Habits',
+  author : 'James Clear',
+  img : '../public/images/book1.jpg'
+}
+
+const secondBook = {
+  title : 'The Power of Habit',
+  author : 'Charles Duhigg',
+  img : '../public/images/book2.jpg'
+}
+
 const BookList = () => {
   return (
     <section className='booklist'>
-      <Book />
-      <Book />
-      <Book />
-      <Book />
+      <Book title={firstBook.title} author={firstBook.author} img={firstBook.img}/>
+      <Book title={secondBook.title} author={secondBook.author} img={secondBook.img}/>
     </section>
   )
 }
 
-const Book = () => {
+
+const Book = (props) => {
   return (
     <article className='book'>
-      <Image />
-      <Title />
-      <Author />
+      <img src={props.img} alt={props.title}/>
+      <h1>{props.title}</h1>
+      <h4>{props.author}</h4>
+      {console.log(props)}
     </article>
   )
 }
-
-// const Image = () => <img src="https://images-na.ssl-images-amazon.com/images/I/8194oe+zw4L._AC_UL160_SR160,160_.jpg" alt="" />
-const Image = () => <img src="../public/images/book1.jpg" alt="" />
-
-const Title = () => <h1>Atomic Habits</h1>
-const Author = () => <h4>James Clear</h4>
 
 function App() {
   return (
