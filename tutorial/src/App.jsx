@@ -5,14 +5,11 @@ import {books} from './Books'
 import  Book  from './Book'
 
 const BookList = () => {
-  const getBook = (id) => {
-    const book = books.find((book) => book.id === id)
-    console.log(book);
-  }
+
   return (
     <section className='booklist'>
       {books.map((book) => {
-        return <Book key={book.id} {...book} getBook={getBook}/>
+        return <Book key={book.id} {...book}/>
       })}
       
     </section>
