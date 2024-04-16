@@ -1,4 +1,5 @@
 import logo from '../assets/images/logo.svg';
+import { PageLinks } from './data';
 const Navbar = () => {
     return (
       <nav className="navbar">
@@ -11,7 +12,16 @@ const Navbar = () => {
           </div>
           {/* <!-- left this comment on purpose --> */}
           <ul className="nav-links" id="nav-links">
-            <li>
+            { PageLinks.map((link) => {
+               return (
+                <li key={link.id}>
+                  <a href={link.url} className="nav-link">
+                    {link.text}
+                  </a>
+                </li>
+               )
+            })}
+            {/* <li>
               <a href="#home" className="nav-link">
                 {" "}
                 home{" "}
@@ -37,7 +47,7 @@ const Navbar = () => {
                 {" "}
                 tours
               </a>
-            </li>
+            </li> */}
           </ul>
 
           <ul className="nav-icons">
