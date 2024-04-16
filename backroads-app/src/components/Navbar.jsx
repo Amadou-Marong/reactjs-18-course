@@ -1,5 +1,6 @@
 import logo from '../assets/images/logo.svg';
-import { PageLinks } from './data';
+import { pageLinks, socialLinks } from './data';
+
 const Navbar = () => {
     return (
       <nav className="navbar">
@@ -12,7 +13,7 @@ const Navbar = () => {
           </div>
           {/* <!-- left this comment on purpose --> */}
           <ul className="nav-links" id="nav-links">
-            { PageLinks.map((link) => {
+            { pageLinks.map((link) => {
                return (
                 <li key={link.id}>
                   <a href={link.url} className="nav-link">
@@ -21,37 +22,19 @@ const Navbar = () => {
                 </li>
                )
             })}
-            {/* <li>
-              <a href="#home" className="nav-link">
-                {" "}
-                home{" "}
-              </a>
-            </li>
-
-            <li>
-              <a href="#about" className="nav-link">
-                {" "}
-                about{" "}
-              </a>
-            </li>
-
-            <li>
-              <a href="#services" className="nav-link">
-                {" "}
-                services{" "}
-              </a>
-            </li>
-
-            <li>
-              <a href="#tours" className="nav-link">
-                {" "}
-                tours
-              </a>
-            </li> */}
           </ul>
 
           <ul className="nav-icons">
-            <li>
+            { socialLinks.map((link) => {
+                return (
+                  <li key={link.id}>
+                    <a href={link.url} target="_blank" className="nav-icon">
+                      <i className={link.icon}></i>
+                    </a>
+                  </li>
+                )
+            })}
+            {/* <li>
               <a
                 href="https://www.twitter.com"
                 target="_blank"
@@ -77,7 +60,7 @@ const Navbar = () => {
               >
                 <i className="fab fa-squarespace"></i>
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>
