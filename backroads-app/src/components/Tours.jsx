@@ -1,12 +1,39 @@
 import Title from "./Title";
-
+import { tours } from "./data";
 const Tours = () => {
   return (
     <section className="section" id="tours">
-      <Title title="featured" subtitle="tours"/>
-      
+      <Title title="featured" subtitle="tours" />
+
       <div className="section-center featured-center">
-        <article className="tour-card">
+        {tours.map((tour) => {
+          return (
+            <article className="tour-card" key={tour.id}>
+              <div className="tour-img-container">
+                <img src={tour.image} className="tour-img" alt="" />
+                <p className="tour-date">{tour.date}</p>
+              </div>
+              <div className="tour-info">
+                <div className="tour-title">
+                  <h4>{tour.title}</h4>
+                </div>
+                <p>{tour.title}</p>
+                <div className="tour-footer">
+                  <p>
+                    <span>
+                      <i className="fas fa-map"></i>
+                    </span>{" "}
+                    {tour.country}
+                  </p>
+                  <p>{`${tour.days} days`}</p>
+                  <p>{`from $${tour.price}`}</p>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+
+        {/* <article className="tour-card">
           <div className="tour-img-container">
             <img src="./images/tour-1.jpeg" className="tour-img" alt="" />
             <p className="tour-date">august 26th, 2020</p>
@@ -106,7 +133,7 @@ const Tours = () => {
               <p>from $3300</p>
             </div>
           </div>
-        </article>
+        </article> */}
       </div>
     </section>
   );
