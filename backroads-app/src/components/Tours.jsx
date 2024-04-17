@@ -10,7 +10,7 @@ const Tours = () => {
           return (
             <article className="tour-card" key={tour.id}>
               <div className="tour-img-container">
-                <img src={tour.image} className="tour-img" alt="" />
+                <img src={tour.image} className="tour-img" alt={tour.title} />
                 <p className="tour-date">{tour.date}</p>
               </div>
               <div className="tour-info">

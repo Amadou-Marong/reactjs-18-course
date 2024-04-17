@@ -1,4 +1,7 @@
 import tour1 from '../assets/images/tour-1.jpeg'
+import tour2 from '../assets/images/tour-2.jpeg'
+import tour3 from '../assets/images/tour-3.jpeg'
+import tour4 from '../assets/images/tour-4.jpeg'
 
 export const pageLinks = [
     { id: 1, text: "home", url: "#home" },
@@ -22,7 +25,7 @@ export const services = [
 export const tours = [
     {   
         id: 1, 
-        image: "../assets/images/tour-1.jpeg", 
+        image: tour1, 
         date: "august 26th, 2020", 
         title: "Tibet Adventure", 
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque vitae tempore voluptatum maxime reprehenderit eum quod exercitationem fugit, qui corporis.", 
@@ -32,7 +35,7 @@ export const tours = [
     },
     {   
         id: 2, 
-        image: "../assets/images/tour-2.jpeg", 
+        image: tour2, 
         date: "october 10th, 2020", 
         title: "best of java", 
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque vitae tempore voluptatum maxime reprehenderit eum quod exercitationem fugit, qui corporis.", 
@@ -42,7 +45,7 @@ export const tours = [
     },
     {   
         id: 3, 
-        image: "../assets/images/tour-3.jpeg", 
+        image: tour3, 
         date: "september 15th, 2020", 
         title: "explore hong kong",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque vitae tempore voluptatum maxime reprehenderit eum quod exercitationem fugit, qui corporis.",  
@@ -52,7 +55,7 @@ export const tours = [
     },
     {   
         id: 4, 
-        image: "../assets/images/tour-4.jpeg", 
+        image: tour4, 
         date: "december 5th, 2019", 
         title: "kenya highlights",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque vitae tempore voluptatum maxime reprehenderit eum quod exercitationem fugit, qui corporis.",  
