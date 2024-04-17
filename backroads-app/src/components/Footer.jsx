@@ -1,5 +1,6 @@
 // import { pageLinks, socialLinks } from "./data";
 import PageLinks from "./PageLinks";
+import SocialLinks from "./SocialLinks";
 import { socialLinks } from "./data";
 const Footer = () => {
   return (
@@ -16,7 +17,8 @@ const Footer = () => {
           )
         })}
       </ul> */}
-      <ul className="footer-icons">
+      <SocialLinks parentClass="footer-icons" childClass="footer-icon"/>
+      {/* <ul className="footer-icons">
         {socialLinks.map((link) => {
           return (
             <li key={link.id}>
@@ -26,7 +28,7 @@ const Footer = () => {
             </li>
           )
         })}
-      </ul>
+      </ul> */}
       <p className="copyright">
         copyright &copy; Backroads travel tours company
         <span id="date">{new Date().getFullYear()}</span> all rights reserved
