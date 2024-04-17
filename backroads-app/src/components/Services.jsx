@@ -1,13 +1,27 @@
 import Title from "./Title";
-
+import { services } from "./data";
 const Services = () => {
   return (
     <>
       <section className="section services" id="services">
-        <Title title="Our" subtitle="Services"/>
-        
+        <Title title="Our" subtitle="Services" />
+
         <div className="section-center services-center">
-          <article className="service">
+          {services.map((service) => {
+            const { id, icon, title, text } = service;
+            return (
+              <article className="service" key={id}>
+                <span className="service-icon">
+                  <i className={icon}></i>
+                </span>
+                <div className="service-info">
+                  <h4 className="service-title">{title}</h4>
+                  <p className="service-text">{text}</p>
+                </div>
+              </article>
+            );
+          })}
+          {/* <article className="service">
             <span className="service-icon">
               <i className="fas fa-wallet fa-fw"></i>
             </span>
@@ -44,7 +58,7 @@ const Services = () => {
                 Asperiores, officia.
               </p>
             </div>
-          </article>
+          </article> */}
         </div>
       </section>
     </>
