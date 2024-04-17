@@ -13,7 +13,7 @@ const Navbar = () => {
             </button>
           </div>
           {/* <!-- left this comment on purpose --> */}
-          <PageLinks />
+          <PageLinks parentClass="nav-links" childClass="nav-link"/>
           {/* <ul className="nav-links" id="nav-links">
             { pageLinks.map((link) => {
                return (
