@@ -1,6 +1,6 @@
 import logo from "../assets/images/logo.svg";
-// import PageLinks from './PageLinks';
-import PageLink from "./PageLink";
+import PageLinks from './PageLinks';
+// import PageLink from "./PageLink";
 import SocialLink from "./SocialLink";
 import { socialLinks, pageLinks } from "./data";
 // import SocialLinks from './SocialLinks';
@@ -17,13 +17,13 @@ const Navbar = () => {
           </button>
         </div>
         {/* <!-- left this comment on purpose --> */}
-        {/* <PageLinks parentClass="nav-links" itemClass="nav-link"/> */}
+        <PageLinks parentClass="nav-links" itemClass="nav-link"/>
 
-        <ul className="nav-links">
+        {/* <ul className="nav-links">
           {pageLinks.map((link) => {
             return <PageLink key={link.id} {...link} itemClass="nav-link" />;
           })}
-        </ul>
+        </ul> */}
 
         <ul className="nav-icons">
           {socialLinks.map((link) => {

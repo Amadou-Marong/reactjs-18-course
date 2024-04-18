@@ -5,11 +5,12 @@ const PageLinks = ({parentClass, itemClass}) => {
         <ul className={parentClass} id="nav-links">
             { pageLinks.map((link) => {
                return (
-                <li key={link.id}>
-                  <a href={link.url} className={itemClass}>
-                    {link.text}
-                  </a>
-                </li>
+                <PageLink key={link.id} link={link} itemClass={itemClass}/>
+                // <li key={link.id}>
+                //   <a href={link.url} className={itemClass}>
+                //     {link.text}
+                //   </a>
+                // </li>
                )
             })}
         </ul>
