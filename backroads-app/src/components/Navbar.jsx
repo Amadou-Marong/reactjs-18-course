@@ -14,9 +14,9 @@ const Navbar = () => {
             </button>
           </div>
           {/* <!-- left this comment on purpose --> */}
-          <PageLinks parentClass="nav-links" childClass="nav-link"/>
+          <PageLinks parentClass="nav-links" itemClass="nav-link"/>
          
-          <SocialLinks parentClass="nav-icons" childClass="nav-icon"/>
+          <SocialLinks parentClass="nav-icons" itemClass="nav-icon"/>
           
         </div>
       </nav>

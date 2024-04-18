@@ -5,9 +5,9 @@ import SocialLinks from "./SocialLinks";
 const Footer = () => {
   return (
     <footer className="section footer">
-      <PageLinks parentClass="footer-links" childClass="footer-link"/>
+      <PageLinks parentClass="footer-links" itemClass="footer-link"/>
   
-      <SocialLinks parentClass="footer-icons" childClass="footer-icon"/>
+      <SocialLinks parentClass="footer-icons" itemClass="footer-icon"/>
     
       <p className="copyright">
         copyright &copy; Backroads travel tours company
