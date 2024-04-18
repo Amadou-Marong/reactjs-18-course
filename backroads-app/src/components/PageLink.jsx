@@ -1,8 +1,8 @@
-const PageLink = () => {
+const PageLink = ({url, text, itemClass}) => {
   return (
-    <li key={link.id}>
-      <a href={link.url} className={childClass}>
-        {link.text}
+    <li>
+      <a href={url} className={itemClass}>
+        {text}
       </a>
     </li>
   );
