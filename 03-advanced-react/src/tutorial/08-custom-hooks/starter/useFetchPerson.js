@@ -26,6 +26,7 @@ const useFetchPerson = (url) => {
         };
         fetchUser();
     }, []);
+    
     return {isLoading, isError, user}    
 }
 
