@@ -1,7 +1,10 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import NavLinks from "./NavLinks";
 
 export const NavbarContext = createContext();
+
+export const useAppContext = () => useContext(NavbarContext)
+
 
 const Navbar = () => {
   const [user, setUser] = useState({ name: "Ahmad" });
