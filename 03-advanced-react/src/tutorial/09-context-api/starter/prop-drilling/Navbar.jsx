@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
       <nav className="navbar">
-        <h5>My Logo</h5>
+        <h5>CONTEXT API</h5>
         <NavLinks user={user} logout={logout}/>
       </nav>
   );
