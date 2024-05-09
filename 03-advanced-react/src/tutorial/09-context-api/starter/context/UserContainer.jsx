@@ -5,7 +5,6 @@ import { useAppContext } from "./Navbar";
 const UserContainer = () => {
     const {user, logout} = useAppContext()
 
-    // return "Hello";
     return (
         <div className="user-container">
             {user?
