@@ -5,10 +5,17 @@ const Submenu = () => {
     const { pageId, setPageId } = useGlobalContext();
     
     const submenuContainer = useRef(null)
-
+    
     const currentPage = sublinks.find((item) => item.pageId === pageId)
     const handleMouseLeave = (event) => {
-        setPageId(null)
+        // 
+        const submenu = submenuContainer.current
+        const { left, right, bottom } = submenu.getBoundingClientRect();
+        const { clientX, clientY } = event;
+
+        if (clientX < left + 1 || clientX > right - 1 || clientY > bottom - 1) {
+            setPageId(null);
+        }
     }
     return (
         <div className={currentPage? "submenu show-submenu" : "submenu"} onMouseLeave={handleMouseLeave} ref={submenuContainer}>
