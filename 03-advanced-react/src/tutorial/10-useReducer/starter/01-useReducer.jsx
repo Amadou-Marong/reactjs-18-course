@@ -11,6 +11,7 @@ const ReducerBasics = () => {
     <div>
       {people.map((person) => {
         const { id, name } = person;
+        console.log(person);
         return (
           <div key={id} className='item'>
             <h4>{name}</h4>
