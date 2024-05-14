@@ -27,21 +27,23 @@ const ReducerBasics = () => {
           </div>
         );
       })}
-      {people.length < 1 ? 
-      (<button
-        className='btn'
-        style={{ marginTop: '2rem' }}
-        onClick={reset}
-      >
-        Reset
-      </button>)
-      : (<button
-        className='btn'
-        style={{ marginTop: '2rem' }}
-        onClick={clearItems}
-      >
-        clear items
-      </button>)
+      {people.length < 1 ? (
+        <button
+          className='btn'
+          style={{ marginTop: '2rem' }}
+          onClick={reset}
+        >
+          Reset
+        </button>
+      ) : (
+        <button
+          className='btn'
+          style={{ marginTop: '2rem' }}
+          onClick={clearItems}
+        >
+          clear items
+        </button>
+      )
       }
     </div>
   );
