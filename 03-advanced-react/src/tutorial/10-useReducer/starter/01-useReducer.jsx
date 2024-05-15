@@ -1,23 +1,49 @@
-import React from 'react';
-import { data } from '../../../data';
+import { useState, useReducer } from 'react';
+import { data, people } from '../../../data';
+
+const defaultState = {
+  people: data,
+  isLoading: false,
+}
+
+
+const RESET_LIST = 'RESET_ITEMS';
+const CLEAR_LIST = 'CLEAR_ITEMS';
+const REMOVE_ITEM = 'REMOVE_ITEM';
+
+const reducer = (state, action) => {
+  if(action.type === 'CLEAR_ITEMSs') {
+    return {...state, people: []}
+  }
+  // return state;
+  throw new Error(`no matching ${action.type} action type`);
+}
+
 const ReducerBasics = () => {
-  const [people, setPeople] = React.useState(data);
+  
+  const [state, dispatch] = useReducer(reducer, defaultState)
+
+  console.log(state);
+
+
 
   const removeItem = (id) => {
-    let newPeople = people.filter((person) => person.id !== id);
-    setPeople(newPeople);
+    // let newPeople = people.filter((person) => person.id !== id);
+    // setPeople(newPeople);
   };
 
   const clearItems = () => {
-    setPeople([])
+    // setPeople([])
+    dispatch({type: 'CLEAR_ITEMS'})
   }
 
   const reset = () => {
-    setPeople(data)
+    // setPeople(data)
+    dispatch({type: 'something'})
   }
   return (
     <div>
-      {people.map((person) => {
+      {state.people.map((person) => {
         const { id, name } = person;
         console.log(person);
         return (
@@ -27,7 +53,7 @@ const ReducerBasics = () => {
           </div>
         );
       })}
-      {people.length < 1 ? (
+      {state.people.length < 1 ? (
         <button
           className='btn'
           style={{ marginTop: '2rem' }}
