@@ -7,12 +7,12 @@ const defaultState = {
 }
 
 
-const RESET_LIST = 'RESET_ITEMS';
-const CLEAR_LIST = 'CLEAR_ITEMS';
+const RESET_ITEMS = 'RESET_ITEMS';
+const CLEAR_ITEMS = 'CLEAR_ITEMS';
 const REMOVE_ITEM = 'REMOVE_ITEM';
 
 const reducer = (state, action) => {
-  if(action.type === 'CLEAR_ITEMSs') {
+  if(action.type === CLEAR_ITEMS) {
     return {...state, people: []}
   }
   // return state;
@@ -34,12 +34,12 @@ const ReducerBasics = () => {
 
   const clearItems = () => {
     // setPeople([])
-    dispatch({type: 'CLEAR_ITEMS'})
+    dispatch({type: CLEAR_ITEMS})
   }
 
   const reset = () => {
     // setPeople(data)
-    dispatch({type: 'something'})
+    dispatch({type: RESET_LIST})
   }
   return (
     <div>
