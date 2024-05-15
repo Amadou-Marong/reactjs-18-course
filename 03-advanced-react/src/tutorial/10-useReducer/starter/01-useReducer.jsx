@@ -1,3 +1,4 @@
+import { CLEAR_ITEMS, REMOVE_ITEM, RESET_ITEMS } from './actions';
 import { useState, useReducer } from 'react';
 import { data, people } from '../../../data';
 
@@ -6,10 +7,6 @@ const defaultState = {
   isLoading: false,
 }
 
-
-const RESET_ITEMS = 'RESET_ITEMS';
-const CLEAR_ITEMS = 'CLEAR_ITEMS';
-const REMOVE_ITEM = 'REMOVE_ITEM';
 
 const reducer = (state, action) => {
   if(action.type === CLEAR_ITEMS) {
@@ -29,10 +26,6 @@ const reducer = (state, action) => {
 const ReducerBasics = () => {
   
   const [state, dispatch] = useReducer(reducer, defaultState)
-
-  console.log(state);
-
-
 
   const removeItem = (id) => {
     // let newPeople = people.filter((person) => person.id !== id);
