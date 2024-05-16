@@ -2,6 +2,11 @@ const reducer = (state, action) => {
     if(action.type === "CLEAR_CART") {
         return {...state, cart: new Map()}
     }
-    return state
+    if(action.type === "REMOVE_ITEM") {
+        const newCart = new Map(state.cart)
+        newCart.delete(action.payload.id)
+        return {...state, cart: newCart}
+    }
+    throw new Error(`no matching action type ${action.type}`)
 }
 export default reducer
