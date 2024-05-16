@@ -18,10 +18,8 @@ const defaultValue = {
     loading: false,
     cart: new Map(cartItems.map(item => [item.id, item])),
 }
-console.log(defaultValue);
 
 export const AppProvider = ({children}) => {
-    // const greeting = "Hello"
     const [state, dispatch] = useReducer(reducer, defaultValue)
     return (
         <AppContext.Provider value={{...state}}>
