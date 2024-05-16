@@ -1,10 +1,17 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useEffect } from "react";
+import reducer from "./reducer";
+
+import { 
+    CLEAR_CART, 
+    REMOVE, 
+    INCREASE, 
+    DECREASE, 
+    LOADING, 
+    DISPLAY_ITEMS 
+} from "./actions";
 
 export const AppContext = createContext()
 
-const reducer = (state, action) => {
-    return state
-}
 
 const defaultValue = {
     loading: false,
