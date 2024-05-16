@@ -3,7 +3,7 @@ import reducer from "./reducer";
 
 import { 
     CLEAR_CART, 
-    REMOVE, 
+    REMOVE_ITEM, 
     INCREASE, 
     DECREASE, 
     LOADING, 
@@ -26,8 +26,12 @@ export const AppProvider = ({children}) => {
         dispatch({type: CLEAR_CART})
     }
 
+    const removeItem = (id) => {
+        console.log(id);
+    }
+
     return (
-        <AppContext.Provider value={{...state, clearCart}}>
+        <AppContext.Provider value={{...state, clearCart, removeItem}}>
             {children}
         </AppContext.Provider>
     )
