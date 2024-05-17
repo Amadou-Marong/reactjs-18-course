@@ -5,8 +5,6 @@ const CartContainer = () => {
   const {cart, clearCart, totalCost} = useGlobalContext();
   const cartArray = Array.from(cart.entries());
 
-
-
   if (cartArray.length === 0) {
     return (
       <section className='cart'>
