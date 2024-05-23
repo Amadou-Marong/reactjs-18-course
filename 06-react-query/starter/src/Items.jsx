@@ -3,12 +3,17 @@ import SingleItem from './SingleItem';
 import customFetch from './utils';
 
 const Items = ({ items }) => {
-  const result = useQuery({
+  const {isLoading, data} = useQuery({
     queryKey: ['tasks'],
     queryFn: () => customFetch.get('/')
   })
-  console.log(result);
-
+  
+  if (isLoading) {
+    return <div style={{marginTop: '50px'}}>
+      <div style={{width: '30px', height: '30px'}} className="loading"></div>
+    </div>
+  }
+  
   return (
     <div className='items'>
       {items.map((item) => {
