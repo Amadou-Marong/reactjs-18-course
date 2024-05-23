@@ -5,7 +5,10 @@ import customFetch from './utils';
 const Items = () => {
   const {isLoading, data} = useQuery({
     queryKey: ['tasks'],
-    queryFn: () => customFetch.get('/')
+    queryFn: async () => {
+      const {data} = await customFetch.get('/')
+      return data
+    }
   })
   
   if (isLoading) {
