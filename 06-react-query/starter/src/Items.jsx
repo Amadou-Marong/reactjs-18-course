@@ -7,7 +7,7 @@ const Items = ({ items }) => {
     queryKey: ['tasks'],
     queryFn: () => customFetch.get('/')
   })
-
+  console.log(result);
 
   return (
     <div className='items'>
