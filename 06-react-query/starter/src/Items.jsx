@@ -17,10 +17,14 @@ const Items = () => {
     </div>
   }
 
-  if (isError) {  
-    return <p style={{marginTop: '1rem'}}>There was an error...</p>
+  // if (isError) {  
+  //   return <p style={{marginTop: '1rem'}}>There was an error...</p>
+  // }
+
+  if (error) {
+    return <p style={{marginTop: '1rem'}}>{error.response.data}</p>
   }
-  console.log(isError);
+
   return (
     <div className='items'>
       {data.taskList.map((item) => {
