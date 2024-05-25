@@ -5,12 +5,13 @@ import customFetch from './utils';
 const Form = () => {
   const [newItemName, setNewItemName] = useState('');
 
-  const result = useMutation({
+  const {mutate:createTask, isLoading} = useMutation({
     mutationFn: () => customFetch.post('/', {title: 'some value'})
   })
-  console.log(result);
+  
   const handleSubmit = (e) => {
     e.preventDefault();
+    createTask()
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -22,7 +23,7 @@ const Form = () => {
           value={newItemName}
           onChange={(event) => setNewItemName(event.target.value)}
         />
-        <button type='submit' className='btn'>
+        <button type='submit' className='btn' disabled={isLoading}>
           add task
         </button>
       </div>
