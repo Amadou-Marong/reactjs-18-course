@@ -1,8 +1,14 @@
+import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
+import customFetch from './utils';
 
 const Form = () => {
   const [newItemName, setNewItemName] = useState('');
 
+  const result = useMutation({
+    mutationFn: () => customFetch.post('/', {title: 'some value'})
+  })
+  console.log(result);
   const handleSubmit = (e) => {
     e.preventDefault();
   };
