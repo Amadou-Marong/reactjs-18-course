@@ -26,6 +26,7 @@ export const useCreateTask = () => {
       toast.error(error.response.data.msg)
     }
   })
+  return {createTask, isLoading}
 }
 
 export const useEditTask = () => {
