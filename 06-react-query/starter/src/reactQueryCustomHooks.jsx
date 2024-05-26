@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import customFetch from './utils';
+import { toast } from 'react-toastify';
 
 export const useFetchTasks = () => {
     const {isLoading, data, isError, error} = useQuery({
@@ -12,7 +13,20 @@ export const useFetchTasks = () => {
     return {isLoading, isError, data}
 }
 
-export const useCreateTask = () => {}
+export const useCreateTask = () => {
+    const queryClient = useQueryClient()
+    const {mutate:createTask, isLoading} = useMutation({
+    mutationFn: (taskTitle) => customFetch.post('/', {title: taskTitle}),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['tasks'] });
+      toast.success('task added')
+      setNewItemName('')
+    },
+    onError: (error) => {
+      toast.error(error.response.data.msg)
+    }
+  })
+}
 
 export const useEditTask = () => {
     const queryClient = useQueryClient()
