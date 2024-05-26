@@ -10,3 +10,7 @@ export const useFetchTasks = () => {
     })
     return {isLoading, isError, data}
 }
+
+export const useCreateTask = () => {}
+export const useEditTask = () => {}
+export const useDeleteTask = () => {}
