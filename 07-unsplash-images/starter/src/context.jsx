@@ -12,7 +12,7 @@ export const AppProvider = ({children}) => {
         setDarkTheme(newTheme)
         const body = document.querySelector('body')
         body.classList.toggle('dark-theme', newTheme)
-        console.log(body);
+        // console.log(body);
     }
 
     return (

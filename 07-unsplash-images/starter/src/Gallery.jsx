@@ -9,7 +9,7 @@ const Gallery = () => {
   const {search, setSearch} = useGlobalContext()
   
   const response = useQuery({
-    queryKey: ['images'],
+    queryKey: ['images', search],
     queryFn: async () => {
       const result = await axios.get(`${url}&query=${search}`)
 
