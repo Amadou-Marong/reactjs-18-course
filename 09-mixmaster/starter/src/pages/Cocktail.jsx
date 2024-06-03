@@ -24,9 +24,22 @@ const Cocktail = () => {
   } = singleDrink
 
   return (
-    <div>
-        <h2>Cocktail</h2>
-    </div>
+    <Wrapper>
+      <header>
+        <Link to="/" className="btn">Back to HomePage</Link>
+        <h3>{name}</h3>
+      </header>
+      <div className="drink">
+        <img src={image} alt={name} className="img"/>
+        <div className="drink-info">
+          <p><span className="drink-data">name :</span> {name}</p>
+          <p><span className="drink-data">category :</span> {category}</p>
+          <p><span className="drink-data">info :</span> {info}</p>
+          <p><span className="drink-data">glass :</span> {glass}</p>
+          <p><span className="drink-data">instructions :</span> {instructions}</p>
+        </div>
+      </div>
+    </Wrapper>
   )
 }
 
