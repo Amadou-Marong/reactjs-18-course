@@ -1,25 +1,50 @@
-
 const Newsletter = () => {
   return (
-    <section className="page">
-      <form action="" className="form">
-        <h3 style={{marginBottom: "2rem", textAlign: "center"}}>Our Newsletter</h3>
-        <div className="form-row">
-          <label htmlFor="name" className="form-label">first name</label>
-          <input type="text" name="name" className="form-input" id="name" defaultValue="imam"/>
-        </div>
-        <div className="form-row">
-          <label htmlFor="lastName" className="form-label">last name</label>
-          <input type="text" name="lastName" className="form-input" id="lastName" defaultValue="ahmad"/>
-        </div>
-        <div className="form-row">
-          <label htmlFor="email" className="form-label">email</label>
-          <input type="text" name="email" className="form-input" id="email" defaultValue="test@test.com"/>
-        </div>
-        <button type="submit" className="btn btn-block">Submit</button>
-      </form>
-    </section>
-  )
-}
+    <form className="form">
+      <h3 style={{ marginBottom: "2rem", textAlign: "center" }}>
+        Our Newsletter
+      </h3>
+      <div className="form-row">
+        <label htmlFor="name" className="form-label">
+          first name
+        </label>
+        <input
+          type="text"
+          name="name"
+          className="form-input"
+          id="name"
+          defaultValue="imam"
+        />
+      </div>
+      <div className="form-row">
+        <label htmlFor="lastName" className="form-label">
+          last name
+        </label>
+        <input
+          type="text"
+          name="lastName"
+          className="form-input"
+          id="lastName"
+          defaultValue="ahmad"
+        />
+      </div>
+      <div className="form-row">
+        <label htmlFor="email" className="form-label">
+          email
+        </label>
+        <input
+          type="text"
+          name="email"
+          className="form-input"
+          id="email"
+          defaultValue="test@test.com"
+        />
+      </div>
+      <button type="submit" className="btn btn-block">
+        Submit
+      </button>
+    </form>
+  );
+};
 
-export default Newsletter
+export default Newsletter;
