@@ -15,6 +15,8 @@ export const action = async ({request}) => {
     return redirect('/');
   } catch (error) {
     console.log(error);
+    toast.error(error?.response?.data?.msg)
+    return error
   }
   
 }
@@ -34,7 +36,7 @@ const Newsletter = () => {
           name="name"
           className="form-input"
           id="name"
-          defaultValue="imam"
+          required
         />
       </div>
       <div className="form-row">
@@ -46,7 +48,7 @@ const Newsletter = () => {
           name="lastName"
           className="form-input"
           id="lastName"
-          defaultValue="ahmad"
+          required
         />
       </div>
       <div className="form-row">
