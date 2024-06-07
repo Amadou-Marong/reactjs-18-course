@@ -16,7 +16,7 @@ const Landing = () => {
  
   return (
     <div>
-        <SearchForm />
+        <SearchForm searchTerm={searchTerm}/>
         <CocktailList drinks={drinks}/>
     </div>
   )
