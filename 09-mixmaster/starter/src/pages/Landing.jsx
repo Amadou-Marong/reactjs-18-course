@@ -25,7 +25,7 @@ export const loader = async ({request}) => {
   return { searchTerm }
 }
 const Landing = () => {
-  const { drinks, searchTerm } = useLoaderData()
+  const { searchTerm } = useLoaderData()
  
   return (
     <div>
