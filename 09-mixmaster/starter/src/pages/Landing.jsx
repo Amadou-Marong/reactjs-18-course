@@ -22,6 +22,7 @@ export const loader = (queryClient) => async ({request}) => {
   
   const searchTerm = url.searchParams.get('search') || '';
 
+  await queryClient.ensureQueryData(searchCocktailsQuery(searchTerm))
   return { searchTerm }
 }
 const Landing = () => {
