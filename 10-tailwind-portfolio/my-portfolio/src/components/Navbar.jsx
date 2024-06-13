@@ -10,7 +10,6 @@ const Navbar = () => {
                 <div className="flex gap-x-3">
                     {links.map((link) => {
                         const {id, href, text} = link;
-                        console.log(link);
                         return (
                             <a href={href} key={id} className='capitalize text-lg tracking-wide hover:text-emerald-600 duration-300'>{text}</a>
                         )
