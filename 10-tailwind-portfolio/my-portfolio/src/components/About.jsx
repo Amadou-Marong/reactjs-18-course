@@ -4,7 +4,7 @@ const About = () => {
     return (
         <section id="about" className="py-4 bg-white">
             
-            <div className="align-element grid md:grid-cols-2 gap-16 items-center">
+            <div className="align-element grid md:grid-cols-2 gap-20 items-center">
                 <img src={aboutImg} alt="" className="w-full h-64"/>
                 <article className="py-4">
                     <SectionTitle text="About" />
