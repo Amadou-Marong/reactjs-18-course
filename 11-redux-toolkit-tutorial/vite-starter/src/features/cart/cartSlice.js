@@ -14,15 +14,27 @@ const cartSlice = createSlice({
     reducers: {
         clearCart: (state) => {
             state.cartItems = []
+            state.amount = 0
             // return { cartItems: [] }
         },
         removeItem: (state, action) => {
-            console.log(action);
+            // console.log(action);
+            state.cartItems = state.cartItems.filter(item => item.id !== action.payload)
+            // return { cartItems: state.cartItems.filter(item => item.id !== action.payload) }
+            state.amount = state.amount - 1
+        },
+        increase: (state, {payload}) => {
+            const cartItem = state.cartItems.find(item => item.id == payload)
+            cartItem.amount = cartItem.amount += 1
+        },
+        decrease: (state, {payload}) => {
+            const cartItem = state.cartItems.find(item => item.id == payload)
+            cartItem.amount = cartItem.amount -= 1
         }
     }
 })
 
 // console.log(cartSlice);
-export const { clearCart, removeItem } = cartSlice.actions
+export const { clearCart, removeItem, increase, decrease } = cartSlice.actions
 
 export default cartSlice.reducer
