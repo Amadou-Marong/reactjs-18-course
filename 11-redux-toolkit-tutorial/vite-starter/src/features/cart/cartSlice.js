@@ -39,7 +39,6 @@ const cartSlice = createSlice({
             })
             state.total = parseFloat(total.toFixed(2))
             state.amount = amount
-
         }
     }
 })
