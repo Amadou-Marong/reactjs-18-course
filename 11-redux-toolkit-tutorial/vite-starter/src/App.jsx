@@ -12,7 +12,7 @@ function App() {
   const { isModalOpen } = useSelector((state) => state.modal)
 
   useEffect(() => {
-    dispatch(getCartItems())
+    dispatch(getCartItems('Random'))
   }, [])
 
   useEffect(() => {
