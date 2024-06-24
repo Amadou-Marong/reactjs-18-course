@@ -1,8 +1,10 @@
-
+import { About, Cart, Error, Checkout, HomeLayout, Products, SingleProduct, Landing, Register, Login, Orders } from '../pages';
 function App() {
 
   return (
-    <h1 className="text-3xl font-bold underline">Hello World</h1>
+    <div>
+      <About />
+    </div>
   )
 }
 
