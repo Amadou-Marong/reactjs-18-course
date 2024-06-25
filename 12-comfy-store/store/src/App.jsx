@@ -1,5 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { About, Cart, Error, Checkout, HomeLayout, Products, SingleProduct, Landing, Register, Login, Orders } from '../pages';
 
 const router = createBrowserRouter([
@@ -17,42 +16,40 @@ const router = createBrowserRouter([
         element: <About />
       },
       {
-        path: 'cart',
-        element: <Cart />
-      },
-      {
-        path: 'checkout',
-        element: <Checkout />
-      },
-      {
         path: 'products',
         element: <Products />
       },
       {
-        path: 'products/:id',
+        path: 'product:id',
         element: <SingleProduct />
+      },
+      {
+        path: 'cart',
+        element: <Cart />
       },
       {
         path: 'orders',
         element: <Orders />
+      },
+      {
+        path: 'checkout',
+        element: <Checkout />
       }
     ]
-    
   },
   {
-    path: '/login',
+    path: 'login',
     element: <Login />,
     errorElement: <Error />
   },
   {
-    path: '/register',
+    path: 'register',
     element: <Register />,
     errorElement: <Error />
   }
-]);
-
-function App() {
-  return <RouterProvider router={router} />
+])
+const App = () => {
+  return <RouterProvider router={router}/>
 }
 
 export default App
