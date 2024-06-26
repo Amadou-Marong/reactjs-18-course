@@ -1,9 +1,11 @@
+import { Header, Navbar } from "../components"
 import { Outlet } from "react-router"
 const HomeLayout = () => {
   return (
     <nav>
-        <span className="text-4xl text-primary">Home Layout</span>
-        <section className="align-element py-8">
+        <Header />
+        <Navbar />
+        <section className="align-element py-2">
           <Outlet />
         </section>
     </nav>
