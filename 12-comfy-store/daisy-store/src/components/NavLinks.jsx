@@ -6,7 +6,7 @@ const links = [
     { id: 5, text: 'checkout', url: '/checkout'},
     { id: 6, text: 'orders', url: '/orders' }
 ]
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 const NavLinks = () => {
   return (
@@ -16,7 +16,7 @@ const NavLinks = () => {
                 const { id, url, text } = link
                 return (
                     <li key={id}>
-                        <Link to={url} className="capitalize">{text}</Link>
+                        <NavLink to={url} className="capitalize">{text}</NavLink>
                     </li>
                 )
             })
