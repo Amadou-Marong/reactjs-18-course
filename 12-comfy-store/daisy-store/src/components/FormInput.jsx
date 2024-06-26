@@ -1,12 +1,13 @@
-const FormInput = ({}) => {
+const FormInput = ({label, name, type, defaultValue}) => {
   return (
     <div className="form-control">
       <div className="label">
-        <span className="label-text">What is your name?</span>
+        <span className="label-text">{label}</span>
       </div>
       <input
-        type="text"
-        placeholder="Type here"
+        type={type}
+        name={name}
+        placeholder={defaultValue}
         className="input input-bordered"
       />
     </div>
