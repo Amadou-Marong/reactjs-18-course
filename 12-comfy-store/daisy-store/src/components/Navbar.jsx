@@ -7,6 +7,8 @@ import { useState } from "react";
 const Navbar = () => {
     const [ theme, setTheme ] = useState(false)
 
+    useState(false)
+
     const handleTheme = () => {
         setTheme(!theme)
     }
@@ -32,12 +34,12 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <label htmlFor="" className="swap swap-rotate">
+                    <label className="swap swap-rotate">
                         <input type="checkbox" onChange={handleTheme} />
-
-                        <BsSunFill className="swap-on w-4 h-4"/>
-                        
-                        <BsMoonFill className="swap-off w-4 h-4"/>
+                        {/* Sun icon */}
+                        <BsSunFill className="swap-on h-4 w-4"/>
+                        {/* Moon icon */}
+                        <BsMoonFill className="swap-off h-4 w-4"/>
                     </label>
                     <NavLink to="/cart" className="btn btn-ghost btn-circle btn-md ml-4">
                         <div className="indicator">
