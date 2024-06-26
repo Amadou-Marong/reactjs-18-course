@@ -3,7 +3,9 @@ const HomeLayout = () => {
   return (
     <nav>
         <span className="text-4xl text-primary">Home Layout</span>
-        <Outlet />
+        <section className="align-element py-8">
+          <Outlet />
+        </section>
     </nav>
   )
 }
