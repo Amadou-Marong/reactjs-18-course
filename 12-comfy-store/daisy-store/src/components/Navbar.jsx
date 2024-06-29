@@ -7,7 +7,6 @@ import { useState } from "react";
 const Navbar = () => {
     const [ theme, setTheme ] = useState(false)
 
-    useState(false)
 
     const handleTheme = () => {
         setTheme(!theme)
