@@ -1001,7 +1001,7 @@ const Navbar = () => {
     const newTheme = theme === winter ? dracula : winter;
     setTheme(newTheme);
   };
-
+ 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
