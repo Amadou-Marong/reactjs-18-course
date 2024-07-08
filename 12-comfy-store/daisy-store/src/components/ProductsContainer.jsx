@@ -11,10 +11,9 @@ const ProductsContainer = () => {
   const [isGridView, setIsGridView] = useState(true)
   return (
     <div>
-        {/* <ProductsList /> */}
-        {/* <ProductsGrid /> */}
         <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-bold text-neutral-content">Products</h2>
+            <h2 className="text-2xl font-bold">{total} {total > 1 ? 'products' : 'product'}</h2>
+
             <div className="flex gap-4">
                 <button onClick={() => setIsGridView(true)} className={`btn ${isGridView ? 'btn-primary' : 'btn-outline'}`}>
                     <BsFillGridFill />
@@ -24,7 +23,12 @@ const ProductsContainer = () => {
                 </button>
             </div>
           </div>
-        {isGridView ? <ProductsGrid /> : <ProductsList />}
+        <div>
+          {
+            total === 0 ? (<h2 className="text-2xl font-bold mt-16">No products Match your Search</h2>) : 
+              (isGridView) ? (<ProductsGrid />) : (<ProductsList />)
+          }
+        </div>
     </div>
   )
 }
