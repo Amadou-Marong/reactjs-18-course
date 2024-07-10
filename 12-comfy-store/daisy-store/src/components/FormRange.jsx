@@ -1,10 +1,10 @@
 import {useState} from 'react'
 import { formatPrice } from '../utils'
 const FormRange = ({name, label, size}) => {
-    const step = 1000;
-    const maxPrice = 100000;
-    
-    const [selectedPrice, setSelectedPrice] = useState(maxPrice)
+  const step = 1000;
+  const maxPrice = 100000;
+  
+  const [selectedPrice, setSelectedPrice] = useState(maxPrice)
 
   return (
     <div className="form-control">
