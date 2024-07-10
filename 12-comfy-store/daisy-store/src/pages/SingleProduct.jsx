@@ -2,6 +2,7 @@ import { useLoaderData, Link } from "react-router-dom";
 import { formatPrice } from "../utils";
 import { customFetch } from "../utils";
 import { useState } from "react";
+import { generateAmountOptions } from "../utils";
 
 export const loader = async ({params}) => {
   const response = await customFetch.get(`/products/${params.id}`);
@@ -16,6 +17,7 @@ const SingleProduct = () => {
   const { title, price, image, description, colors, company } = product.attributes;
   const [amount, setAmount] = useState(1)
   const [productColor, setProductColor] = useState(colors[0])
+
 
   const handleChange = (e) => {
     setAmount(parseInt(e.target.value))
@@ -65,9 +67,10 @@ const SingleProduct = () => {
               <h4 className="text-md font-medium tracking-wider capitalize">amount</h4>
             </label>
             <select value={amount} onChange={handleChange} className="select select-secondary select-bordered select-md">
-                <option value={1}>1</option>
+                {/* <option value={1}>1</option>
                 <option value={2}>2</option>
-                <option value={3}>3</option>
+                <option value={3}>3</option> */}
+                {generateAmountOptions(10)}
             </select>
           </div>
           <div className="mt-4">
