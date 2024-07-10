@@ -2,7 +2,6 @@ import { useLoaderData, Link } from "react-router-dom"
 import { formatPrice } from "../utils";
 const ProductsGrid = () => {
     const { products } = useLoaderData()
-    console.log(products);
   return (
     <div className="pt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {products.map((product) => {
