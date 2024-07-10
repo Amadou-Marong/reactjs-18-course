@@ -21,6 +21,10 @@ const FormRange = ({name, label, size}) => {
             className={`range range-primary ${size}`}
             onChange={(e) => setSelectedPrice(e.target.value)}
         />
+        <div className="w-full px-2 mt-2 flex justify-between text-xs">
+          <span className="font-bold text-md">0</span>
+          <span className="font-bold text-md">Max: {formatPrice(maxPrice)}</span>
+        </div>
     </div>
   )
 }
