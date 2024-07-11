@@ -11,7 +11,7 @@ const ProductsContainer = () => {
   const [isGridView, setIsGridView] = useState(true)
   return (
     <div>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center mt-4">
             <h2 className="text-2xl font-bold">{total} {total > 1 ? 'products' : 'product'}</h2>
 
             <div className="flex gap-4">
