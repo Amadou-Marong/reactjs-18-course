@@ -4,6 +4,11 @@ import { customFetch } from "../utils";
 import { useState } from "react";
 import { generateAmountOptions } from "../utils";
 
+import { useDispatch } from "react-redux";
+import { addToCart } from "../features/cart/cartSlice";
+import { toast } from "react-toastify";
+
+
 export const loader = async ({params}) => {
   const response = await customFetch.get(`/products/${params.id}`);
   const product = response.data.data;
@@ -22,7 +27,25 @@ const SingleProduct = () => {
   const handleChange = (e) => {
     setAmount(parseInt(e.target.value))
   }
-  return (
+
+  const dispatch = useDispatch()
+  
+  const cartProduct = { 
+    cartID : product.id + productColor,
+    productID: product.id,
+    image,
+    title,
+    price,
+    amount,
+    productColor,
+    company
+   }
+   
+   const addToCart = () => {
+      dispatch(addToCart({product: cartProduct}))
+   }
+
+   return (
     <section>
       <div className="text-md breadcrumbs">
         <ul>
@@ -74,7 +97,7 @@ const SingleProduct = () => {
             </select>
           </div>
           <div className="mt-4">
-            <button className="btn btn-secondary btn-md" onClick={() => alert("Added to Bag")}>Add to Bag</button>
+            <button className="btn btn-secondary" onClick={addToCart}>Add to Bag</button>
           </div>
         </div>
       </div>
