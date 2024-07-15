@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-
+import { toast } from "react-toastify";
 
 const defaultState = {
     cartItems: [],
@@ -14,13 +14,17 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState: defaultState,
     reducers: {
-        addToCart: (state, action) => {},
+        addItem: (state, action) => {
+            const { product } = action.payload
+            console.log(product);
+            toast.success("Item added to cart");
+        },
         clearCart: (state, action) => {},
         removeItem: (state, action) => {},
         editItem: (state, action) => {},
     }
 })
 
-export const { addToCart, clearCart, removeItem, editItem } = cartSlice.actions
+export const { addItem, clearCart, removeItem, editItem } = cartSlice.actions
 
 export default cartSlice.reducer

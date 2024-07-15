@@ -20,7 +20,6 @@ const Navbar = () => {
     const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart)
 
 
-
     const handleTheme = () => {
         const { winter, dracula } = themes
         const newTheme = theme === winter ? dracula : winter

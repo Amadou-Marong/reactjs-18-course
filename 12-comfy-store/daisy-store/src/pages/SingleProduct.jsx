@@ -5,7 +5,7 @@ import { useState } from "react";
 import { generateAmountOptions } from "../utils";
 
 import { useDispatch } from "react-redux";
-import { addToCart } from "../features/cart/cartSlice";
+import { addItem } from "../features/cart/cartSlice";
 import { toast } from "react-toastify";
 
 
@@ -42,7 +42,7 @@ const SingleProduct = () => {
    }
    
    const addToCart = () => {
-      dispatch(addToCart({product: cartProduct}))
+      dispatch(addItem({product: cartProduct}))
    }
 
    return (
