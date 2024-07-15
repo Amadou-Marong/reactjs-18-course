@@ -5,14 +5,23 @@ const defaultState = {
     cartItems: [],
     numItemsInCart: 0,
     cartTotal: 0,
-    shippingFee: 534,
+    shipping: 500,
     tax: 0,
     orderTotal: 0,
 }
 
 const getItemsFromLocalStorage = () => {
-    return JSON.parse(localStorage.getItem('cart')) || defaultState
+    // return JSON.parse(localStorage.getItem('cart')) || defaultState;
+
+    try {
+        const savedState = JSON.parse(localStorage.getItem('cart'));
+        return savedState ? savedState : defaultState;
+    } catch (e) {
+        console.error('Error retrieving cart from localStorage:', e);
+        return defaultState;
+    }
 }
+
 
 const cartSlice = createSlice({
     name: 'cart',
@@ -20,9 +29,9 @@ const cartSlice = createSlice({
     reducers: {
         addItem: (state, action) => {
             const { product } = action.payload;
-            const item = state.cartItems.find(item => item.cartID === product.cartID)
+            const item = state.cartItems.find(item => item.cartID === product.cartID);
 
-            if(item) {
+            if (item) {
                 item.amount += product.amount
             } else {
                 state.cartItems.push(product)
@@ -32,12 +41,18 @@ const cartSlice = createSlice({
             cartSlice.caseReducers.calculateTotals(state)
             toast.success("Item added to cart");
         },
-        clearCart: (state, action) => {},
-        removeItem: (state, action) => {},
+        clearCart: (state, action) => {
+            localStorage.setItem('cart', JSON.stringify(defaultState))
+            return defaultState;
+        },
+        removeItem: (state, action) => {
+            const cartID = action.payload
+            console.log(cartID);
+        },
         editItem: (state, action) => {},
         calculateTotals: (state) => {
             state.tax = state.cartTotal * 0.1
-            state.orderTotal = state.cartTotal + state.shippingFee + state.tax
+            state.orderTotal = state.cartTotal + state.shipping + state.tax
             localStorage.setItem('cart', JSON.stringify(state))
         }
     }

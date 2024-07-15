@@ -6,7 +6,6 @@ import { generateAmountOptions } from "../utils";
 
 import { useDispatch } from "react-redux";
 import { addItem } from "../features/cart/cartSlice";
-import { toast } from "react-toastify";
 
 
 export const loader = async ({params}) => {
