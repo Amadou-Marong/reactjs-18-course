@@ -24,6 +24,10 @@ const cartSlice = createSlice({
                 state.cartItems.push(product)
             }
             state.numItemsInCart += product.amount
+            state.cartTotal += product.amount * product.price
+            state.tax = state.cartTotal * 0.1
+            state.orderTotal = state.cartTotal + state.shippingFee + state.tax
+            localStorage.setItem('cart', JSON.stringify(state.cartItems))
             toast.success("Item added to cart");
         },
         clearCart: (state, action) => {},
