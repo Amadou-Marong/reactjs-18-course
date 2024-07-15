@@ -16,7 +16,14 @@ const cartSlice = createSlice({
     reducers: {
         addItem: (state, action) => {
             const { product } = action.payload
-            console.log(product);
+            const item = state.cartItems.find(item => item.cartID === product.cartID)
+
+            if(item) {
+                item.amount += product.amount
+            } else {
+                state.cartItems.push(product)
+            }
+            state.numItemsInCart += product.amount
             toast.success("Item added to cart");
         },
         clearCart: (state, action) => {},
