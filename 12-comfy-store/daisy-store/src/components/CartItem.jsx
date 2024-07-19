@@ -9,7 +9,10 @@ const CartItem = ({cartItem}) => {
       <div className="sm:ml-16 sm:w-48">	
         <h3 className="capitalize font-medium">{title}</h3>
         <h4 className="mt-2 text-sm capitalize text-neutral-content">{company}</h4>	
-        <h4 className="mt-4 ">{productColor}</h4>
+        <p className="mt-4 text-sm capitalize flex items-center gap-x-2">
+          color:
+          <span className="badge badge-sm" style={{backgroundColor: productColor}}></span>
+        </p>
       </div>
       <div>
         

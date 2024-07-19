@@ -3345,7 +3345,7 @@ const CartItem = ({ cartItem }) => {
       {/* INFO */}
       <div className='sm:ml-16 sm:w-48'>
         {/* TITLE */}
-        <h3 className='capitalize font-medium'>{title}</h3>
+        <h3 className='capitalize font-medium'>{title}</h3>a
         {/* COMPANY */}
         <h4 className='mt-2 capitalize text-sm text-neutral-content'>
           {company}
