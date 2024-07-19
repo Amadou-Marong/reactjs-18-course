@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { generateAmountOptions } from "../utils"
+import { formatPrice, generateAmountOptions } from "../utils"
 import { editItem, removeItem } from "../features/cart/cartSlice"
 
 
@@ -26,7 +26,7 @@ const CartItem = ({cartItem}) => {
           <span className="badge badge-sm" style={{backgroundColor: productColor}}></span>
         </p>
       </div>
-      <div className="sm:-ml-12">	
+      <div className="sm:ml-12">	
         <div className="form-control max-w-xs">
           <label htmlFor="amount" className="label p-0">
             <span className="label-text">Amount</span>
@@ -36,7 +36,7 @@ const CartItem = ({cartItem}) => {
           </select>
         </div>
         <button className="mt-4 link link-primary link-hover text-sm" onClick={removeItemFromCart}>remove</button>
-
+        <p className="font-medium sm:ml-auto">{formatPrice(price)}</p>
       </div>
     </article>
   )
