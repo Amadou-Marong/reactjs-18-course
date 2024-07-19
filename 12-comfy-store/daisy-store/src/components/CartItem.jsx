@@ -1,8 +1,12 @@
 import { useDispatch } from "react-redux"
+import { generateAmountOptions } from "../utils"
 
 const CartItem = ({cartItem}) => {
   const {amount, cartID, company, image, price, productColor, productID, title} = cartItem
   const dispatch = useDispatch()
+  const handleAmount = (e) => {
+    dispatch(editAmount({cartID, amount: parseInt(e.target.value)}))
+  }
   return (
     <article key={cartID} className="mb-12 flex flex-col gap-y-4 sm:flex-row flex-wrap border-b border-base-300 pb-6 last:border-b-0">
       <img src={image} alt={title} className="h-24 w-24 object-cover rounded-lg sm:h-32 sm:w-32" />
@@ -14,8 +18,15 @@ const CartItem = ({cartItem}) => {
           <span className="badge badge-sm" style={{backgroundColor: productColor}}></span>
         </p>
       </div>
-      <div>
-        
+      <div className="sm:-ml-12">	
+        <div className="form-control max-w-xs">
+          <label htmlFor="amount" className="label p-0">
+            <span className="label-text">Amount</span>
+          </label>
+          <select name="amount" id="amount" className="mt-2 select select-bordered select-xs" value={amount} onChange={handleAmount}>
+            {generateAmountOptions(amount + 5)}
+          </select>
+        </div>
       </div>
     </article>
   )
