@@ -22,7 +22,7 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        login: (state, action) => {
+        loginUser: (state, action) => {
             console.log('login');
             toast.success('login success')
         },
@@ -39,6 +39,6 @@ const userSlice = createSlice({
     }
 });
 
-export const { login, logoutUser, toggleTheme } = userSlice.actions;
+export const { loginUser, logoutUser, toggleTheme } = userSlice.actions;
 
 export default userSlice.reducer;
