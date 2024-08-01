@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import NavLinks from "./NavLinks";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleTheme } from "../features/user/userSlice";
+import { logoutUser, toggleTheme } from "../features/user/userSlice";
 
 
 const themes = {

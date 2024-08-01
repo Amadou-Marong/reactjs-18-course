@@ -23,12 +23,15 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         loginUser: (state, action) => {
-            console.log('login');
-            toast.success('login success')
+            console.log(action.payload)
+            state.user = action.payload;
+            localStorage.setItem('user', JSON.stringify(action.payload));
+            toast.success('login successful');
         },
         logoutUser: (state) => {
-            console.log('logout')
-            toast.success('logout success')
+            state.user = null;
+            localStorage.removeItem('user');
+            toast.success('logout successful');
         },
         toggleTheme: (state) => {
            const { dracula, winter } = themes
