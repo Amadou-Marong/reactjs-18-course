@@ -10,3 +10,5 @@ export { default as SectionTitle } from './SectionTitle';
 export { default as Filters } from './Filters';
 export { default as PaginationContainer } from './PaginationContainer';
 export { default as ProductsContainer } from './ProductsContainer';
+export { default as CheckoutForm } from './CheckoutForm';
+export { default as CartTotals } from './CartTotals';

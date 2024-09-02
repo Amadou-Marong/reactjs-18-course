@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux"
+import { CartTotals, CheckoutForm, SectionTitle } from "../components"
+
 
 const Checkout = () => {
   
