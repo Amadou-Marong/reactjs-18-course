@@ -4,11 +4,19 @@ import { Form, Link, useNavigate } from "react-router-dom"
 import { customFetch } from "../utils"
 import { toast } from "react-toastify"
 import { loginUser } from "../features/user/userSlice"
+import { store } from "../store"
+
+export const action = (store) => async ({ request }) => {
+  console.log(store);
+  return store
+}
+
 const Login = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+ 
   const loginAsGuest = async () => {
     try {
       const response = await customFetch.post("/auth/local", {
