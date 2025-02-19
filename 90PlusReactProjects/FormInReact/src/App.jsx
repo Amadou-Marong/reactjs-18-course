@@ -31,8 +31,9 @@ function App() {
             <div className="my-2">
                 <label htmlFor="subjects" className="block text-gray-500 text-sm font-bold">Subjects</label>
                 <div className="flex items-center mx-4 gap-2">
-                    <input type="checkbox" name="english" id="english" value="english" className="p-2 cursor-pointer"/> <span className="p-1 text-sm">Male</span>
-                    <input type="checkbox" name="maths" id="maths" value="maths" className="p-2 cursor-pointer"/> <span className="p-1 text-sm">Female</span>
+                    <input type="checkbox" name="english" id="english" value="english" className="p-2 cursor-pointer"/> <span className="p-1 text-sm">English</span>
+                    <input type="checkbox" name="maths" id="maths" value="maths" className="p-2 cursor-pointer"/> <span className="p-1 text-sm">Maths</span>
+                    <input type="checkbox" name="physics" id="pysics" value="physics" className="p-2 cursor-pointer"/> <span className="p-1 text-sm">Physics</span>
                 </div>
             </div>
         </form>
