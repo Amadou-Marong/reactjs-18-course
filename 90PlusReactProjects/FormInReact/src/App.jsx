@@ -72,8 +72,9 @@ function App() {
                 <textarea name="bio" id="bio" placeholder="Enter Bio" className="p-1 text-sm rounded w-full h-24 border border-gray-300 capitalize outline-none placeholder-gray-400" required></textarea>
             </div>
             {/* buttons */}
-            <div className="my-2">
-
+            <div className="my-2 flex gap-2">
+                <input type="submit" value="Submit" className="p-1 text-sm rounded w-full bg-green-600 text-white cursor-pointer" />
+                <input type="reset" value="Reset" className="p-1 text-sm rounded w-full bg-gray-600 text-white cursor-pointer" />
             </div>
         </form>
       </div>
