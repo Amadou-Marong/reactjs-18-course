@@ -44,6 +44,7 @@ function App() {
                 <label htmlFor="url" className="block text-gray-500 text-sm font-bold">Enter Url*</label>
                 <input type="url" name="url" id="url" placeholder="Enter Url" className="p-1 text-sm rounded w-full border border-gray-300 capitalize outline-none placeholder-gray-400" required/>
             </div>
+            {/* select */}
             <div className="my-2">
                 <select name="level" id="level" className="p-1 text-sm rounded w-full border border-gray-300 capitalize outline-none placeholder-gray-400">
                     <option value="" disabled selected>
