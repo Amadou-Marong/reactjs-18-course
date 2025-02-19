@@ -44,6 +44,36 @@ function App() {
                 <label htmlFor="url" className="block text-gray-500 text-sm font-bold">Enter Url*</label>
                 <input type="url" name="url" id="url" placeholder="Enter Url" className="p-1 text-sm rounded w-full border border-gray-300 capitalize outline-none placeholder-gray-400" required/>
             </div>
+            <div className="my-2">
+                <select name="level" id="level" className="p-1 text-sm rounded w-full border border-gray-300 capitalize outline-none placeholder-gray-400">
+                    <option value="" disabled selected>
+                        Select Level
+                    </option>
+                    <optgroup label="Beginners" className="bg-gray-100">
+                        <option value="1">HTML</option>
+                        <option value="2">CSS</option>
+                        <option value="3">JS</option>
+                    </optgroup>
+                    <optgroup label="Intermediate" className="bg-gray-100">
+                        <option value="4">PHP</option>
+                        <option value="5">Python</option>
+                        <option value="6">Java</option>
+                    </optgroup>
+                    <optgroup label="Advanced" className="bg-gray-100">
+                        <option value="7">C++</option>
+                        <option value="8">C#</option>
+                        <option value="9">Ruby</option>    
+                    </optgroup>	
+                </select>
+            </div>
+            <div className="my-2">
+                <label htmlFor="bio" className="block text-gray-500 text-sm font-bold">Bio*</label>
+                <textarea name="bio" id="bio" placeholder="Enter Bio" className="p-1 text-sm rounded w-full h-24 border border-gray-300 capitalize outline-none placeholder-gray-400" required></textarea>
+            </div>
+            {/* buttons */}
+            <div className="my-2">
+
+            </div>
         </form>
       </div>
     </>
