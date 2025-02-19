@@ -36,6 +36,14 @@ function App() {
                     <input type="checkbox" name="physics" id="pysics" value="physics" className="p-2 cursor-pointer"/> <span className="p-1 text-sm">Physics</span>
                 </div>
             </div>
+            <div className="my-2">
+                <label htmlFor="resume" className="block text-gray-500 text-sm font-bold">Upload Resume*</label>
+                <input type="file" name="resume" id="resume" placeholder="Upload Resume" className="p-1 text-sm rounded w-full border border-gray-300 capitalize outline-none placeholder-gray-400"/>
+            </div>
+            <div className="my-2">
+                <label htmlFor="url" className="block text-gray-500 text-sm font-bold">Enter URL*</label>
+                <input type="url" name="url" id="url" placeholder="Enter Url" className="p-1 text-sm rounded w-full border border-gray-300 capitalize outline-none placeholder-gray-400"/>
+            </div>
         </form>
       </div>
     </>
