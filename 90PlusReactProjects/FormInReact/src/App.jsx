@@ -7,19 +7,19 @@ function App() {
             <h2 className="my-4 text-green-600 text-center font-bold text-lg">React Form</h2>
             <div className="my-2">
                 <label htmlFor="firstName" className="block text-gray-500 text-sm font-bold">First Name*</label>
-                <input type="text" name="firstName" id="firstName" placeholder="Enter First Name" className="p-1 text-sm rounded w-full border border-gray-300 capitalize placeholder-gray-400 outline-none"/>
+                <input type="text" name="firstName" id="firstName" placeholder="Enter First Name" className="p-1 text-sm rounded w-full border border-gray-300 capitalize placeholder-gray-400 outline-none" required/>
             </div>
             <div className="my-2">
                 <label htmlFor="lastName" className="block text-gray-500 text-sm font-bold">Last Name*</label>
-                <input type="text" name="lastName" id="lastName" placeholder="Enter Last Name" className="p-1 text-sm rounded w-full border border-gray-300 capitalize placeholder-gray-400 outline-none"/>
+                <input type="text" name="lastName" id="lastName" placeholder="Enter Last Name" className="p-1 text-sm rounded w-full border border-gray-300 capitalize placeholder-gray-400 outline-none" required/>
             </div>
             <div className="my-2">
                 <label htmlFor="email" className="block text-gray-500 text-sm font-bold">Email*</label>
-                <input type="email" name="email" id="email" placeholder="Enter Email" className="p-1 text-sm rounded w-full border border-gray-300 capitalize outline-none placeholder-gray-400"/>
+                <input type="email" name="email" id="email" placeholder="Enter Email" className="p-1 text-sm rounded w-full border border-gray-300 capitalize outline-none placeholder-gray-400" required/>
             </div>
             <div className="my-2">
                 <label htmlFor="contact" className="block text-gray-500 text-sm font-bold">Contact*</label>
-                <input type="text" name="contact" id="contact" placeholder="Enter Contact" className="p-1 text-sm rounded w-full border border-gray-300 capitalize outline-none placeholder-gray-400"/>
+                <input type="text" name="contact" id="contact" placeholder="Enter Contact" className="p-1 text-sm rounded w-full border border-gray-300 capitalize outline-none placeholder-gray-400" required/>
             </div>
             <div className="my-2">
                 <label htmlFor="gender" className="block text-gray-500 text-sm font-bold">Gender*</label>
@@ -38,11 +38,11 @@ function App() {
             </div>
             <div className="my-2">
                 <label htmlFor="resume" className="block text-gray-500 text-sm font-bold">Upload Resume*</label>
-                <input type="file" name="resume" id="resume" placeholder="Upload Resume" className="p-1 text-sm rounded w-full border border-gray-300 capitalize outline-none placeholder-gray-400"/>
+                <input type="file" name="resume" id="resume" placeholder="Upload Resume" className="p-1 text-sm rounded w-full border border-gray-300 capitalize outline-none placeholder-gray-400" required/>
             </div>
             <div className="my-2">
-                <label htmlFor="url" className="block text-gray-500 text-sm font-bold">Enter URL*</label>
-                <input type="url" name="url" id="url" placeholder="Enter Url" className="p-1 text-sm rounded w-full border border-gray-300 capitalize outline-none placeholder-gray-400"/>
+                <label htmlFor="url" className="block text-gray-500 text-sm font-bold">Enter Url*</label>
+                <input type="url" name="url" id="url" placeholder="Enter Url" className="p-1 text-sm rounded w-full border border-gray-300 capitalize outline-none placeholder-gray-400" required/>
             </div>
         </form>
       </div>
