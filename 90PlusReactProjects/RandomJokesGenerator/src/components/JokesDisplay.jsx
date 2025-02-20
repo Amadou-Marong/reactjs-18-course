@@ -19,7 +19,7 @@ const JokesDisplay = ({jokeText, isLoading, error}) => {
     }
   return (
     <article className="p-2 border rounded-md my-2">
-      <h2 className="text-md upercase text-gray-500 font-bold text-center">Joke of the day</h2>
+      <h2 className="text-md uppercase text-gray-500 font-bold text-center">Joke of the day</h2>
       <p className="mt-4 text-lg text-slate-700 leading-loose text-center text-wrap overflow-clip">{jokeText}</p>
     </article>
   )
