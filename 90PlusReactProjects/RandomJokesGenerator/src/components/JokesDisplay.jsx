@@ -1,8 +1,11 @@
+import PropTypes from 'prop-types';
+import LoadingSpinner from './LoadingSpinner';
+
 const JokesDisplay = ({jokeText, isLoading, error}) => {
 
     if (isLoading) {
-        // loading state
-        return <span className="spinner border-4 border-dashed rounded-full animate-spin"></span>
+        // loading spinner
+       <LoadingSpinner />
     }
 
     if (error) {
@@ -20,6 +23,13 @@ const JokesDisplay = ({jokeText, isLoading, error}) => {
       <p className="mt-4 text-lg text-slate-700 leading-loose text-center text-wrap overflow-clip">{jokeText}</p>
     </article>
   )
+
 }
+
+JokesDisplay.propTypes = {
+    jokeText: PropTypes.string.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    error: PropTypes.string
+};
 
 export default JokesDisplay
