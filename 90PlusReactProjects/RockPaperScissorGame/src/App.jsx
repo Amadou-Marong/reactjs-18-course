@@ -1,16 +1,36 @@
 import {useState} from "react"
 function App() {
 
+  const [computerChoice, setComputerChoice] = useState("")
+  const [playerChoice, setPlayerChoice] = useState("")
+  const [computerScore, setComputerScore] = useState(0)
+  const [playerScore, setPlayerScore] = useState(0)
+  
+  const handleScore = (playerChoice, computerChoice) => {
+    if (playerChoice === computerChoice) return
+    if(playerChoice === "rock" && computerChoice === "scissor" || 
+      playerChoice === "paper" && computerChoice === "rock" ||
+      playerChoice === "scissor" && computerChoice === "paper"
+    ){
+      setPlayerScore((prev) => prev + 1) // player wins
+    } else {
+      setComputerScore((prev) => prev + 1) // computer wins
+    }
+  }
+
   const choices = [
     "rock",
     "paper",
     "scissor"
   ]
 
-  const [computerChoice, setComputerChoice] = useState("")
-  const [useChoice, setUserChoice] = useState("")
-  
-  
+  const handlePlayerChoice = (choice) => {
+    const newComputerChoice = choices[Math.floor(Math.random() * choices.length)]
+    setPlayerChoice(choice);
+    setComputerChoice(newComputerChoice)
+    handleScore(choice, newComputerChoice)
+  }
+
 
   return (
     <>
@@ -18,25 +38,17 @@ function App() {
           <article className="bg-white shadow-lg border-slate-200 rounded-md p-4 min-w-96">
               <h3 className="text-gray-600 font-bold text-lg capitalize text-center">Rock Paper Scissor Game</h3>
               <div className="h-40 w-full border my-6 p-4">
-                <p className="text-gray-500 font-bold">Player Choice: {useChoice}</p>
+                <p className="text-gray-500 font-bold">Player Choice: {playerChoice}</p>
                 <p className="text-gray-500 font-bold">Computer Choice: {computerChoice}</p>
               </div>
+              <div className="h-40 w-full my-6 flex gap-4">
+                <p className="border w-full p-2 text-gray-500 font-bold text-lg bg-blue-200">Player Score: <span className="block text-center text-4xl text-slate-600">{playerScore}</span></p>
+                <p className="border w-full p-2 text-gray-500 font-bold text-lg bg-blue-200">Computer Score: <span className="block text-center text-4xl text-slate-600">{computerScore}</span></p>
+              </div>
               <div className="flex gap-2 items-center justify-center">
-                <button onClick={() => {
-                    setUserChoice(choices[0]);
-                    setComputerChoice(choices[Math.floor(Math.random() * choices.length)])
-                  }
-                } className="bg-gray-500 text-white py-2 px-4 rounded-md cursor-pointer">Rock</button>
-                <button onClick={() => {
-                    setUserChoice(choices[1])
-                    setComputerChoice(choices[Math.floor(Math.random() * choices.length)])
-                  }
-                } className="bg-gray-500 text-white py-2 px-4 rounded-md cursor-pointer">Paper</button>
-                <button onClick={() => {
-                    setUserChoice(choices[2])
-                    setComputerChoice(choices[Math.floor(Math.random() * choices.length)])
-                  }
-                } className="bg-gray-500 text-white py-2 px-4 rounded-md cursor-pointer">Scissor</button>
+                {choices.map((choice) => (
+                  <button key={choice} className="bg-gray-500 text-white py-2 px-4 rounded-md cursor-pointer">{choice}</button>
+                ))}
               </div>
           </article>
       </main>
