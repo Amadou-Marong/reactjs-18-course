@@ -1,4 +1,5 @@
 import {useState} from "react"
+import { Mountain, FileText, Scissors } from 'lucide-react';
 function App() {
 
   const [computerChoice, setComputerChoice] = useState("")
@@ -19,16 +20,17 @@ function App() {
   }
 
   const choices = [
-    "rock",
-    "paper",
-    "scissor"
+    {name: "rock", icon: Mountain},
+    {name: "paper", icon: FileText},
+    {name: "scissor", icon: Scissors}
   ]
+
 
   const handlePlayerChoice = (choice) => {
     const newComputerChoice = choices[Math.floor(Math.random() * choices.length)]
-    setPlayerChoice(choice);
-    setComputerChoice(newComputerChoice)
-    handleScore(choice, newComputerChoice)
+    setPlayerChoice(choice.name);
+    setComputerChoice(newComputerChoice.name)
+    handleScore(choice.name, newComputerChoice.name)
   }
 
 
@@ -47,7 +49,7 @@ function App() {
               </div>
               <div className="flex gap-2 items-center justify-center">
                 {choices.map((choice) => (
-                  <button key={choice} className="bg-gray-500 text-white py-2 px-4 rounded-md cursor-pointer">{choice}</button>
+                  <button key={choice.name} onClick={() => handlePlayerChoice(choice)} className="bg-gray-500 text-white py-2 px-4 rounded-md cursor-pointer"><choice.icon size={24} /> </button>
                 ))}
               </div>
           </article>
