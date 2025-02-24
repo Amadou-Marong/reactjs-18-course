@@ -87,11 +87,11 @@ const ConfirmModal = ({todo, isOpen, onClose, onDelete}) => {
   );
 };
 
-const Todos = ({ myTodos, onOpenModal }) => {
+const Todos = ({ myTodos, onOpenUpdateModal, onOpenDeleteModal }) => {
   const handleOpenModal = (todo) => {
-    onOpenModal(todo);
+    onOpenUpdateModal(todo);
   };
-  return (
+  return ( 
     <>
       <ul>
         {myTodos.map((todo, index) => (
@@ -100,7 +100,7 @@ const Todos = ({ myTodos, onOpenModal }) => {
               {todo?.id}. {todo?.title}
               <span>{todo?.completed ? "Done" : "Not Done"}</span>
               <button
-                onClick={() => handleOpenModal(todo)}
+                onClick={() => onOpenDeleteModal(todo)}
                 className="cursor-pointer px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
               >
                 Delete
@@ -123,7 +123,8 @@ const Todos = ({ myTodos, onOpenModal }) => {
 function App() {
   const [myTodos, setMyTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState(null);
 
   useEffect(() => {
@@ -143,14 +144,25 @@ function App() {
     setNewTodo("");
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleCloseUpdateModal = () => {
+    setIsUpdateModalOpen(false);
+    // setIsConfirmModalOpen(false);
   };
 
-  const handleOpenModal = (todo) => {
+  const handleCloseConfirmModal = () => {
+    setIsConfirmModalOpen(false)
+  } 
+
+  const handleOpenUpdateModal = (todo) => {
     setSelectedTodo(todo);
-    setIsModalOpen(true);
+    setIsUpdateModalOpen(true);
+    // setIsConfirmModalOpen(true)
   };
+
+  const handleOpenConfirmModal = (todo) => {
+    setSelectedTodo(todo);
+    setIsConfirmModalOpen(true)
+  }
 
   const handleUpdate = (id, updatedTitle) => {
     // console.log(todo, updatedTitle);
@@ -185,19 +197,19 @@ function App() {
           </div>
           <div>
             <h2 className="text-2xl font-bold">My Todos</h2>
-            <Todos myTodos={myTodos} onOpenModal={handleOpenModal} />
+            <Todos myTodos={myTodos} onOpenUpdateModal={handleOpenUpdateModal} onOpenDeleteModal={handleOpenConfirmModal}/>
           </div>
         </div>
         {
           <EditModal
             todo={selectedTodo}
-            isOpen={isModalOpen}
-            onClose={handleCloseModal}
+            isOpen={isUpdateModalOpen}
+            onClose={handleCloseUpdateModal}
             onUpdate={handleUpdate}
           />
         }
         {
-          <ConfirmModal todo={selectedTodo} isOpen={isModalOpen} onClose={handleCloseModal} onDelete={handleDelete}/>
+          <ConfirmModal todo={selectedTodo} isOpen={isConfirmModalOpen} onClose={handleCloseConfirmModal} onDelete={handleDelete}/>
         }
       </main>
     </>
