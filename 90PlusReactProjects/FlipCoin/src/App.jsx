@@ -12,7 +12,7 @@ function App() {
     setCoin(coinSides)
   }, [])
 
-  console.log(coin[0]?.imgSrc);
+  // console.log(coin[0]?.imgSrc);
   
   const handleFlipCoin = () => {
     const currentSide = Math.floor(Math.random() * coinSides.length)
