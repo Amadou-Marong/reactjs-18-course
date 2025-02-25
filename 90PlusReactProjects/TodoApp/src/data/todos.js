@@ -1,16 +1,17 @@
+import {v4 as uuidv4} from "uuid";
 const todos = [
     {
-        id: 1,
+        id: uuidv4(),
         title: "Learn React",
         completed: false,
     },
     {
-        id: 2,
+        id: uuidv4(),
         title: "Learn Vue",
         completed: false,
     },
     {
-        id: 3,
+        id: uuidv4(),
         title: "Learn Svelte",
         completed: false,
     },

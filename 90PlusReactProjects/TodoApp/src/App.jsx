@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import todos from "./data/todos";
+import { v4 as uuidv4 } from "uuid";
 
 const EditModal = ({ todo, isOpen, onClose, onUpdate }) => {
   const [updatedTitle, setUpdatedTitle] = useState("");
@@ -29,6 +30,8 @@ const EditModal = ({ todo, isOpen, onClose, onUpdate }) => {
             className="p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4"
             type="text"
             placeholder="Edit todo"
+            name="updatedTitle"
+            id="updatedTitle"
           />
           <div className="flex justify-end gap-3">
             <button
@@ -51,53 +54,58 @@ const EditModal = ({ todo, isOpen, onClose, onUpdate }) => {
   );
 };
 
-const ConfirmModal = ({todo, isOpen, onClose, onDelete}) => {
-  
-  if (!isOpen) return null
-  
+const ConfirmModal = ({ todo, isOpen, onClose, onDelete }) => {
+  if (!isOpen) return null;
+
   const confirmDelete = () => {
-    onDelete(todo?.id)
-    onClose()
-  }
+    onDelete(todo?.id);
+    onClose();
+  };
 
   return (
     <>
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30">
         <div className="min-w-96 bg-white shadow-lg p-6 rounded-lg">
-          <h2 className="text-xl font-semibold mb-4">Are you Sure Delete {todo?.title}</h2>     
-            <div className="flex justify-end gap-3">
-              <button
-                onClick={confirmDelete}
-                type="button"
-                className="cursor-pointer px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
-              >
-                Delete
-              </button>
-              <button
-                onClick={onClose}
-                type="button"
-                className="cursor-pointer px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 transition"
-              >
-                Cancel
-              </button>
-            </div> 
+          <h2 className="text-xl font-semibold mb-4">
+            Are you Sure Delete {todo?.title}
+          </h2>
+          <div className="flex justify-end gap-3">
+            <button
+              onClick={confirmDelete}
+              type="button"
+              className="cursor-pointer px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
+            >
+              Delete
+            </button>
+            <button
+              onClick={onClose}
+              type="button"
+              className="cursor-pointer px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 transition"
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-const Todos = ({ myTodos, onOpenUpdateModal, onOpenDeleteModal }) => {
+const Todos = ({ myTodos, onOpenUpdateModal, onOpenDeleteModal, onToggleComplete }) => {
   const handleOpenModal = (todo) => {
     onOpenUpdateModal(todo);
   };
-  return ( 
+
+  const handleComplete = (todo) => {
+    onToggleComplete(todo?.id)
+  }
+  return (
     <>
       <ul>
-        {myTodos.map((todo, index) => (
-          <li key={index} className="p-2">
+        {myTodos.map((todo) => (
+          <li key={todo?.id} className="p-2">
             <div className="flex items-center gap-x-2 justify-between">
-              {todo?.id}. {todo?.title}
+              {todo?.title}
               <span>{todo?.completed ? "Done" : "Not Done"}</span>
               <button
                 onClick={() => onOpenDeleteModal(todo)}
@@ -111,7 +119,7 @@ const Todos = ({ myTodos, onOpenUpdateModal, onOpenDeleteModal }) => {
               >
                 Edit
               </button>
-              <input type="checkbox" name="" id="" />
+              <input onClick={() => handleComplete(todo)} type="checkbox" name="isCompleted" id="isCompleted" />
             </div>
           </li>
         ))}
@@ -133,7 +141,7 @@ function App() {
 
   const addTodo = () => {
     const todo = {
-      id: myTodos.length + 1,
+      id: uuidv4(),
       title: newTodo,
       completed: false,
     };
@@ -150,8 +158,8 @@ function App() {
   };
 
   const handleCloseConfirmModal = () => {
-    setIsConfirmModalOpen(false)
-  } 
+    setIsConfirmModalOpen(false);
+  };
 
   const handleOpenUpdateModal = (todo) => {
     setSelectedTodo(todo);
@@ -161,8 +169,8 @@ function App() {
 
   const handleOpenConfirmModal = (todo) => {
     setSelectedTodo(todo);
-    setIsConfirmModalOpen(true)
-  }
+    setIsConfirmModalOpen(true);
+  };
 
   const handleUpdate = (id, updatedTitle) => {
     // console.log(todo, updatedTitle);
@@ -172,6 +180,14 @@ function App() {
       )
     );
   };
+
+  const handleToggleComplete = (id) => {
+    setMyTodos((prev) => 
+      prev.map((todo) => {
+        todo.id === id ? {...todo, completed: !todo.completed} : todo
+      })
+    )
+  }
 
   const handleDelete = (id) => {
     setMyTodos((prev) => prev.filter((todo) => todo.id !== id));
@@ -186,18 +202,27 @@ function App() {
               value={newTodo}
               onChange={(e) => setNewTodo(e.target.value)}
               type="text"
-              className="p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4"
+              className="p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              placeholder="Add todo"
+              autoFocus
+              onKeyDown={(e) => e.key === "Enter" && addTodo()}
+              required
+              name="newTodo"
+              id="newTodo"
             />
             <button
               onClick={addTodo}
               className="p-2 cursor-pointer bg-gray-500 text-white rounded-md hover:bg-gray-600 transition"
-            >
-              Add
-            </button>
+            >Add</button>
           </div>
           <div>
             <h2 className="text-2xl font-bold">My Todos</h2>
-            <Todos myTodos={myTodos} onOpenUpdateModal={handleOpenUpdateModal} onOpenDeleteModal={handleOpenConfirmModal}/>
+            <Todos
+              myTodos={myTodos}
+              onOpenUpdateModal={handleOpenUpdateModal}
+              onOpenDeleteModal={handleOpenConfirmModal}
+              onToggleComplete={handleToggleComplete}
+            />
           </div>
         </div>
         {
@@ -209,7 +234,12 @@ function App() {
           />
         }
         {
-          <ConfirmModal todo={selectedTodo} isOpen={isConfirmModalOpen} onClose={handleCloseConfirmModal} onDelete={handleDelete}/>
+          <ConfirmModal
+            todo={selectedTodo}
+            isOpen={isConfirmModalOpen}
+            onClose={handleCloseConfirmModal}
+            onDelete={handleDelete}
+          />
         }
       </main>
     </>
