@@ -22,7 +22,7 @@ function App() {
     setTimeout(() => {
       setSide(currentSide)
       setIsFlipping(false)
-    }, 1000)
+    }, 2000)
     // handleSideCount(side)
   }
 
@@ -45,7 +45,18 @@ function App() {
           <h1 className="text-3xl font-bold text-center my-4">Flip Coin</h1>
           {/* Coin */}
           <div className="flex justify-center">
-              <img className="w-full" src={`${coin[side]?.imgSrc}`} alt="" />
+            <AnimatePresence>
+              <motion.img 
+                key={side}
+                className="w-48"
+                src={coin[side]?.imgSrc}
+                alt="coin"
+                initial={{ rotateY: 0}}
+                animate={{ rotateY: isFlipping ? 360 : 0 }}
+                transition={{ duration: 1, ease: "easeInOut" }}
+              />
+            </AnimatePresence>
+              {/* <img className="w-full" src={`${coin[side]?.imgSrc}`} alt="" /> */}
           </div>
           <div className="mt-4 flex justify-center gap-4">
             <button disabled={isFlipping} onClick={handleFlipCoin} className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition cursor-pointer">{isFlipping ? "Flipping" : "Flip Coins"}</button>
