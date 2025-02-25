@@ -1,10 +1,12 @@
 import {useEffect, useState} from "react";
 import coinSides from "./data/data";
+import {motion, AnimatePresence} from "framer-motion"
 
 function App() {
   
   const [coin, setCoin] = useState("");
-  const [side, setSide] = useState("");
+  const [side, setSide] = useState(0);
+  const [isFlipping, setIsFlipping] = useState(false)
   const [headCount, setHeadCount] = useState(0)
   const [tailCount, setTailCount] = useState(0)
   
@@ -15,9 +17,26 @@ function App() {
   // console.log(coin[0]?.imgSrc);
   
   const handleFlipCoin = () => {
+    setIsFlipping(true)
     const currentSide = Math.floor(Math.random() * coinSides.length)
-    setSide(currentSide)
+    setTimeout(() => {
+      setSide(currentSide)
+      setIsFlipping(false)
+    }, 1000)
+    // handleSideCount(side)
   }
+
+  // const handleSideCount = (currentSide) => {
+  //   if (currentSide === "head") {
+  //     setHeadCount((prev) => prev += 1)
+  //   } else if (currentSide === "tail") {
+  //     setTailCount((prev) => prev += 1)
+  //   }
+  // }
+
+  // console.log("Heads", headCount);
+  // console.log("Tails", tailCount);
+  
 
   return (
     <>
@@ -29,7 +48,7 @@ function App() {
               <img className="w-full" src={`${coin[side]?.imgSrc}`} alt="" />
           </div>
           <div className="mt-4 flex justify-center gap-4">
-            <button onClick={handleFlipCoin} className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition cursor-pointer">Flip Coins</button>
+            <button disabled={isFlipping} onClick={handleFlipCoin} className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition cursor-pointer">{isFlipping ? "Flipping" : "Flip Coins"}</button>
           </div>
         </div>
       </main>
