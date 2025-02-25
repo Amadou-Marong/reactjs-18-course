@@ -10,4 +10,15 @@ const coinSides = [
     }
 ]
 
+export const dalasiSides = [
+    {
+        side: 'head',
+        imgSrc: 'https://www.coinzoo.net/templates/yootheme/cache/gambia_km59_o-9856b2e4.webp'
+    },
+    {
+        side: 'tail',
+        imgSrc: 'https://www.coinzoo.net/templates/yootheme/cache/gambia_km59_r-b230972d.webp'
+    }
+]
+
 export default coinSides;

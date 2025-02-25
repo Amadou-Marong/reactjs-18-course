@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import coinSides from "./data/data";
+import coinSides, {dalasiSides} from "./data/data";
 import {motion, AnimatePresence} from "framer-motion"
 
 function App() {
@@ -11,7 +11,8 @@ function App() {
   const [tailCount, setTailCount] = useState(0)
   
   useEffect(() => {
-    setCoin(coinSides)
+    // setCoin(coinSides)
+    setCoin(dalasiSides)
   }, [])
 
   // console.log(coin[0]?.imgSrc);
