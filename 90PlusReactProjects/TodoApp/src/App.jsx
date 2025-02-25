@@ -20,7 +20,8 @@ const EditModal = ({ todo, isOpen, onClose, onUpdate }) => {
 
   return (
     // <div className="fixed inset-0 flex items-center justify-center bg-transparent bg-opacity-30 z-50 backdrop-blur-md">
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-brightness-50">
+      {/* <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10"></div> */}
       <div className="min-w-96 bg-white shadow-lg p-6 rounded-lg">
         <h2 className="text-xl font-semibold mb-4">Update Todo</h2>
         <form onSubmit={handleSubmit} className="flex flex-col">
@@ -64,7 +65,7 @@ const ConfirmModal = ({ todo, isOpen, onClose, onDelete }) => {
 
   return (
     <>
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-brightness-50">
         <div className="min-w-96 bg-white shadow-lg p-6 rounded-lg">
           <h2 className="text-xl font-semibold mb-4">
             Are you Sure Delete {todo?.title}
