@@ -1,6 +1,7 @@
 import { HiSwitchHorizontal } from "react-icons/hi"
 import { useState, useEffect } from "react"
 import axios from "axios"
+import Dropdown from "./components/Dropdown"
 function App() {
   const [info, setInfo] = useState([])
   const [amount, setAmount] = useState(0)
@@ -26,6 +27,9 @@ function App() {
     setCurrencies(Object.keys(info))
   }, [info])
 
+  console.log(info);
+  
+
   const swapOptions = () => {
     setFrom(to)
     setTo(from)
@@ -47,14 +51,12 @@ function App() {
 
                 <div className="dropdown">
                   <label htmlFor="from" className="block font-semibold mb-2">From</label>
-                  <select value={from} onChange={(e) => setFrom(e.target.value)} className="dropdown-select">
-                    {/* <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option> */}
+                  {/* <select value={from} onChange={(e) => setFrom(e.target.value)} className="dropdown-select">
                     {currencies.map((currency) => (
                       <option key={currency} value={currency}>{currency}</option> 
                     ))}
-                  </select>
+                  </select> */}
+                  <Dropdown value={from} options={currencies} onChange={(e) => setFrom(e.target.value)}/>
                 </div>
 
                 {/* Swap Icon */}
@@ -65,14 +67,12 @@ function App() {
                 {/* dropdown */}
                 <div className="dropdown">
                   <label htmlFor="to" className="block font-semibold mb-2">To</label>
-                  <select value={to} onChange={(e) => setTo(e.target.value)} className="dropdown-select">
-                    {/* <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option> */}
+                  {/* <select value={to} onChange={(e) => setTo(e.target.value)} className="dropdown-select">
                     {currencies.map((currency) => (
                       <option key={currency} value={currency}>{currency}</option> 
                     ))}
-                  </select>
+                  </select> */}
+                  <Dropdown value={to} options={currencies} onChange={(e) => setTo(e.target.value)}/>
                 </div>
               </div>
 
