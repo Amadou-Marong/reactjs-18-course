@@ -1,3 +1,5 @@
+import headImg from '../assets/gambia_coin_head.webp';
+import tailImg from '../assets/gambia_coin_tail.webp';
 
 const coinSides = [
     {
@@ -13,11 +15,13 @@ const coinSides = [
 export const dalasiSides = [
     {
         side: 'head',
-        imgSrc: 'https://www.coinzoo.net/templates/yootheme/cache/gambia_km59_o-9856b2e4.webp'
+        imgSrc: headImg
+        // imgSrc: 'https://www.coinzoo.net/templates/yootheme/cache/gambia_km59_o-9856b2e4.webp'
     },
     {
         side: 'tail',
-        imgSrc: 'https://www.coinzoo.net/templates/yootheme/cache/gambia_km59_r-b230972d.webp'
+        imgSrc: tailImg
+        // imgSrc: 'https://www.coinzoo.net/templates/yootheme/cache/gambia_km59_r-b230972d.webp'
     }
 ]
 
