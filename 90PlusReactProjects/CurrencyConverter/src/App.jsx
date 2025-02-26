@@ -39,7 +39,7 @@ function App() {
             <div className="card mt-6">
               <h1 className="title">Currency Converter</h1>
               <div className="flex mt-4 gap-x-4">
-                <input className="text-input w-full" placeholder="Enter Amount" type="number" min={0} name="" id="" />
+                <input value={amount} onChange={(e) => setAmount(e.target.value)} className="text-input w-full" placeholder="Enter Amount" type="number" min={0} name="amount" id="amount" />
                 <button className="primary-btn">Convert</button>
               </div>
               <div className="flex mt-4 gap-x-4 justify-between items-center">
