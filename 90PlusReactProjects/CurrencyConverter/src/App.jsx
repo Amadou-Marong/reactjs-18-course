@@ -26,14 +26,21 @@ function App() {
   useEffect(() => {
     setCurrencies(Object.keys(info))
   }, [info])
-
-  console.log(info);
   
 
   const swapOptions = () => {
+    let temp = from
     setFrom(to)
-    setTo(from)
+    setTo(temp)
   }
+
+  const convert = () => {
+    let rate = info[to]
+    setOutput(amount * rate)
+  }
+
+  console.log(output);
+  
 
   return (
     <>
@@ -44,7 +51,7 @@ function App() {
               <h1 className="title">Currency Converter</h1>
               <div className="flex mt-4 gap-x-4">
                 <input value={amount} onChange={(e) => setAmount(e.target.value)} className="text-input w-full" placeholder="Enter Amount" type="number" min={0} name="amount" id="amount" />
-                <button className="primary-btn">Convert</button>
+                <button onClick={convert} className="primary-btn">Convert</button>
               </div>
               <div className="flex mt-4 gap-x-4 justify-between items-center">
                 {/* dropdown from*/}
@@ -79,7 +86,8 @@ function App() {
               {/* Output */}
               <div className="my-4">
                   <h2 className="font-bold">Converted Amount</h2>
-                  <p className="text-2xl font-semibold text-blue-500 p-2 bg-gray-200 rounded">1 Euro = 74.56 Dalasis</p>
+                  {/* <p className="text-2xl font-semibold text-blue-500 p-2 bg-gray-200 rounded">1 Euro = 74.56 Dalasis</p> */}
+                  <p className="text-2xl font-semibold text-blue-500 p-2 bg-gray-200 rounded">{`${amount} ${from} = ${output ? output.toFixed(2) : "0"} ${to}`}</p>
               </div>
             </div>
           </div>
