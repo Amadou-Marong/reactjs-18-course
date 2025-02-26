@@ -38,8 +38,6 @@ function App() {
     let rate = info[to]
     setOutput(amount * rate)
   }
-
-  console.log(output);
   
 
   return (
@@ -58,11 +56,6 @@ function App() {
 
                 <div className="dropdown">
                   <label htmlFor="from" className="block font-semibold mb-2">From</label>
-                  {/* <select value={from} onChange={(e) => setFrom(e.target.value)} className="dropdown-select">
-                    {currencies.map((currency) => (
-                      <option key={currency} value={currency}>{currency}</option> 
-                    ))}
-                  </select> */}
                   <Dropdown value={from} options={currencies} onChange={(e) => setFrom(e.target.value)}/>
                 </div>
 
@@ -74,11 +67,6 @@ function App() {
                 {/* dropdown */}
                 <div className="dropdown">
                   <label htmlFor="to" className="block font-semibold mb-2">To</label>
-                  {/* <select value={to} onChange={(e) => setTo(e.target.value)} className="dropdown-select">
-                    {currencies.map((currency) => (
-                      <option key={currency} value={currency}>{currency}</option> 
-                    ))}
-                  </select> */}
                   <Dropdown value={to} options={currencies} onChange={(e) => setTo(e.target.value)}/>
                 </div>
               </div>
