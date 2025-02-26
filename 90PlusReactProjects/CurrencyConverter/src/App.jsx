@@ -1,6 +1,35 @@
 import { HiSwitchHorizontal } from "react-icons/hi"
-
+import { useState, useEffect } from "react"
+import axios from "axios"
 function App() {
+  const [info, setInfo] = useState([])
+  const [amount, setAmount] = useState(0)
+  const [output, setOutput] = useState()
+  const [from, setFrom] = useState("gmd")
+  const [to, setTo] = useState("usd")
+  const [currencies, setCurrencies] = useState([])
+
+  // https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json
+  // https://latest.currency-api.pages.dev/v1/currencies.json
+
+  const url = `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/${from}.json`
+  
+  useEffect(() => {
+    const getCurrency = async () => {
+      const response = await axios.get(url)
+      setInfo(response.data[from])
+    }
+    getCurrency()
+  }, [url, from])
+
+  useEffect(() => {
+    setCurrencies(Object.keys(info))
+  }, [info])
+
+  const swapOptions = () => {
+    setFrom(to)
+    setTo(from)
+  }
 
   return (
     <>
@@ -10,7 +39,7 @@ function App() {
             <div className="card mt-6">
               <h1 className="title">Currency Converter</h1>
               <div className="flex mt-4 gap-x-4">
-                <input className="text-input w-full" placeholder="Enter Amount" type="text" name="" id="" />
+                <input className="text-input w-full" placeholder="Enter Amount" type="number" min={0} name="" id="" />
                 <button className="primary-btn">Convert</button>
               </div>
               <div className="flex mt-4 gap-x-4 justify-between items-center">
@@ -18,27 +47,39 @@ function App() {
 
                 <div className="dropdown">
                   <label htmlFor="from" className="block font-semibold mb-2">From</label>
-                  <select className="dropdown-select">
-                    <option value="USD">USD</option>
+                  <select value={from} onChange={(e) => setFrom(e.target.value)} className="dropdown-select">
+                    {/* <option value="USD">USD</option>
                     <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
+                    <option value="GBP">GBP</option> */}
+                    {currencies.map((currency) => (
+                      <option key={currency} value={currency}>{currency}</option> 
+                    ))}
                   </select>
                 </div>
 
                 {/* Swap Icon */}
-                <button className="swap-icon">
+                <button onClick={swapOptions} className="swap-icon">
                    <HiSwitchHorizontal size="30px"/>
                 </button>
 
                 {/* dropdown */}
                 <div className="dropdown">
                   <label htmlFor="to" className="block font-semibold mb-2">To</label>
-                  <select className="dropdown-select">
-                    <option value="USD">USD</option>
+                  <select value={to} onChange={(e) => setTo(e.target.value)} className="dropdown-select">
+                    {/* <option value="USD">USD</option>
                     <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
+                    <option value="GBP">GBP</option> */}
+                    {currencies.map((currency) => (
+                      <option key={currency} value={currency}>{currency}</option> 
+                    ))}
                   </select>
                 </div>
+              </div>
+
+              {/* Output */}
+              <div className="my-4">
+                  <h2 className="font-bold">Converted Amount</h2>
+                  <p className="text-2xl font-semibold text-blue-500 p-2 bg-gray-200 rounded">1 Euro = 74.56 Dalasis</p>
               </div>
             </div>
           </div>
