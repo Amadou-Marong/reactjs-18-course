@@ -26,9 +26,9 @@ function App() {
                 </div>
 
                 {/* Swap Icon */}
-                <div className="swap-icon">
+                <button className="swap-icon">
                    <HiSwitchHorizontal size="30px"/>
-                </div>
+                </button>
 
                 {/* dropdown */}
                 <div className="dropdown">
