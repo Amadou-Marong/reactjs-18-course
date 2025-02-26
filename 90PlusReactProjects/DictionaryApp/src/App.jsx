@@ -12,13 +12,17 @@ function App() {
     try {
       const response = await axios.get(`${url}${search}`);
       setWordInfo(response.data[0]);
-      console.log(response.data[0]);
+      console.log(response.data);
       
     } catch (error) {
       console.log(error);
     }
   }
 
+  const playAudio = () => {
+    const audio = new Audio(wordInfo.phonetics[0].audio);
+    audio.play();
+  }
 
   return (
     <>
@@ -47,11 +51,19 @@ function App() {
             <div className="flex gap-2">
               <h2 className="text-xl font-bold mb-2">{wordInfo.word}</h2>
               <span className="text-gray-600">
-                  <button><FcSpeaker size="26px" /></button>
+                  <button onClick={playAudio} className="cursor-pointer"><FcSpeaker size="26px" /></button>
               </span>
             </div>
-            <p className="text-gray-600 mb-2">Meaning: {wordInfo.meanings[0].definitions[0].definition}</p>
-            <p className="text-gray-600">Example: {wordInfo.meanings[0].definitions[0].example}</p>
+            {/* definitions */}
+            <h4>Parts of Speech</h4>
+            <p className="text-gray-600 mb-2">{wordInfo.meanings[0].partOfSpeech}</p>
+            <h4>Meanings</h4>
+            <p className="text-gray-600 mb-2">{wordInfo.meanings[0].definitions[0].definition}</p>
+            
+            <h4>Definitions</h4>
+            <p className="text-gray-600 whitespace-pre-line">
+              {wordInfo.meanings[0].definitions.map((definition) => definition.definition).join("\n")}
+            </p>
           </div>
         )}
       </main>
