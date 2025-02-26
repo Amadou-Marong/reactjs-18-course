@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@layer base {
+  body {
+    @apply bg-gray-100;
+  }
+
+  h1 {
+    @apply text-3xl font-bold tracking-wider;
+  }
+}
+
+@layer components {
+  .title {
+    @apply text-3xl font-bold tracking-wider;
+  }
+  main {
+    @apply min-h-screen bg-gray-300 w-full;
+  }
+  .container {
+    @apply mx-auto max-w-7xl px-8;
+  }
+  .center {
+    @apply grid place-items-center;
+  }
+  .primary-btn {
+    @apply bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer;
+  } 
+
+  .dropdown {
+    @apply relative inline-block;
+  }
+
+  .dropdown-select {
+    @apply px-4 py-2 border border-gray-300 rounded-lg cursor-pointer;
+  }
+
+  .dropdown-menu {
+    @apply absolute z-10 bg-white border border-gray-300 rounded-lg mt-2;
+  }
+
+  .card {
+    @apply bg-white shadow-lg rounded-lg overflow-hidden min-w-[700px] mx-auto p-4;
+  }
+
+  .swap-icon {
+    @apply cursor-pointer bg-gray-200 p-2 rounded-full;
+  }
+
+  .text-input {
+    @apply px-4 py-2 border border-gray-300 rounded-lg;
+  }
+}
