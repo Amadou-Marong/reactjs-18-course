@@ -13,7 +13,7 @@ function App() {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-
+  
   useEffect(() => {
     setEvents(eventsData);
   }, []);
