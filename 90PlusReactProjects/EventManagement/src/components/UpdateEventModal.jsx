@@ -18,7 +18,7 @@ const UpdateEventModal = ({isOpen, onClose, data, onUpdate}) => {
   }, [data])
   
   const handleUpdate = () => {
-    onUpdate(updatedData)
+    onUpdate(data?.id, updatedData)
     onClose()
   }
   

@@ -36,10 +36,11 @@ function App() {
     setDescription("");
   }
 
-  const handleUpdateEvent = (updatedEvent) => {
-    const updatedEvents = events.map(event => event.id === updatedEvent.id ? updatedEvent : event);
+  const handleUpdateEvent = (eventId, updatedEvent) => {
+    const updatedEvents = events.map(event => event.id === eventId ? updatedEvent : event);
     setEvents(updatedEvents);
   }
+
 
   const handleDeleteEvent = (eventId) => {
     setEvents(events.filter(event => event.id !== eventId));
@@ -54,7 +55,7 @@ function App() {
           <div className="flex justify-end">
             <button onClick={handleAddEvent} className="btn btn-primary">Create Event</button>
           </div>
-          <div className="mt-4 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="mt-4 w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <input
               type="text"
               placeholder="Event Title"
