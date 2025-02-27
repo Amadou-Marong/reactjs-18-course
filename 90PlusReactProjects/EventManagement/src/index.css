@@ -48,7 +48,7 @@
     @apply bg-white shadow-md p-4 border border-gray-200 rounded;
   }
 
-  .event-modal {
+  .modal-overlay {
     /* @apply fixed inset-0 flex items-center justify-center z-50; */
     @apply fixed inset-0 z-50 flex items-center justify-center bg-blue-500/10 backdrop-brightness-50;
   }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { eventsData } from "./data/data";
-import EventModal from "./components/UpdateEventModal";
+import UpdateEventModal from "./components/UpdateEventModal";
+import ConfirmDeleteModal from "./components/ConfirmDeleteModal";
 
 function App() {
   const [events, setEvents] = useState([]);
@@ -9,7 +10,8 @@ function App() {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("")
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   useEffect(() => {
     setEvents(eventsData);
@@ -32,6 +34,15 @@ function App() {
     setDate("");
     setLocation("");
     setDescription("");
+  }
+
+  const handleUpdateEvent = (updatedEvent) => {
+    const updatedEvents = events.map(event => event.id === updatedEvent.id ? updatedEvent : event);
+    setEvents(updatedEvents);
+  }
+
+  const handleDeleteEvent = (eventId) => {
+    setEvents(events.filter(event => event.id !== eventId));
   }
 
   return (
@@ -83,15 +94,16 @@ function App() {
                   <p><span className="font-bold">Discription:</span> {event.description}</p>
                   <p><span className="font-bold">Location:</span> {event.location}</p>
                   <div className="flex gap-x-2">
-                    <button className="btn btn-danger">Delete</button>
-                    <button className="btn btn-primary" onClick={() => {setIsOpen(true); setSelectedEvent(event) }}>Edit</button>
+                    <button className="btn btn-danger" onClick={() => {setIsDeleteModalOpen(true); setSelectedEvent(event) }}>Delete</button>
+                    <button className="btn btn-primary" onClick={() => {setIsUpdateModalOpen(true); setSelectedEvent(event) }}>Edit</button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
           
-          <EventModal isOpen={isOpen} onClose={() => setIsOpen(false)} data={selectedEvent}/>
+          <UpdateEventModal isOpen={isUpdateModalOpen} onClose={() => setIsUpdateModalOpen(false)} data={selectedEvent} onUpdate={handleUpdateEvent}/>
+          <ConfirmDeleteModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)} data={selectedEvent} onDelete={handleDeleteEvent}/>
         </div>
       </main>
     </>
