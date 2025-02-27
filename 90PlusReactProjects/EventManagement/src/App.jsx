@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { eventsData } from "./data/data";
 import UpdateEventModal from "./components/UpdateEventModal";
 import ConfirmDeleteModal from "./components/ConfirmDeleteModal";
+import { toast } from "react-toastify";
 
 function App() {
   const [events, setEvents] = useState([]);
@@ -18,32 +19,48 @@ function App() {
   }, []);
 
   const handleAddEvent = () => {
-    const newEvent = {
-      id: new Date().getTime(),
-      title,
-      date,
-      description: "New event description",
-      location,
+    try {
+      const newEvent = {
+        id: new Date().getTime(),
+        title,
+        date,
+        description: "New event description",
+        location,
+      }
+      if (!title || !date || !description || !location) {
+        alert("All fields are required");
+        return;
+      }
+      setEvents([...events, newEvent]);
+      setTitle("");
+      setDate("");
+      setLocation("");
+      setDescription("");
+      toast.success("Event added successfully");
+    } catch (error) {
+      toast.error(error.message);
     }
-    if (!title || !date || !description || !location) {
-      alert("All fields are required");
-      return;
-    }
-    setEvents([...events, newEvent]);
-    setTitle("");
-    setDate("");
-    setLocation("");
-    setDescription("");
   }
 
   const handleUpdateEvent = (eventId, updatedEvent) => {
-    const updatedEvents = events.map(event => event.id === eventId ? updatedEvent : event);
-    setEvents(updatedEvents);
+    try {
+      const updatedEvents = events.map(event => event.id === eventId ? updatedEvent : event);
+      setEvents(updatedEvents);
+      toast.success("Event updated successfully");
+    } catch (error) {
+      toast.error(error.message);
+    }
   }
 
 
   const handleDeleteEvent = (eventId) => {
-    setEvents(events.filter(event => event.id !== eventId));
+    try {
+      const updatedEvents = events.filter(event => event.id !== eventId);
+      setEvents(updatedEvents);
+      toast.success("Event deleted successfully");
+    } catch (error) {
+      toast.error(error.message);
+    }
   }
 
   return (
