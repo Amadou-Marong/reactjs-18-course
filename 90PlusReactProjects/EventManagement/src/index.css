@@ -32,6 +32,12 @@
   .btn-primary {
     @apply bg-blue-500 hover:bg-blue-600 text-white font-bold;
   }
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold;
+  }
+  .btn-danger {
+    @apply bg-red-500 hover:bg-red-600 text-white font-bold;
+  }
   .input {
     @apply border border-gray-300 rounded py-2 px-4 bg-white;
   }
@@ -43,6 +49,7 @@
   }
 
   .event-modal {
-    @apply fixed inset-0 flex items-center justify-center z-50;
+    /* @apply fixed inset-0 flex items-center justify-center z-50; */
+    @apply fixed inset-0 z-50 flex items-center justify-center bg-blue-500/10 backdrop-brightness-50;
   }
 }
