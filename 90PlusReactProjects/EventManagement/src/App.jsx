@@ -54,7 +54,7 @@ function App() {
           <div className="flex justify-end">
             <button onClick={handleAddEvent} className="btn btn-primary">Create Event</button>
           </div>
-          <div className="mt-4 flex gap-x-4">
+          <div className="mt-4 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             <input
               type="text"
               placeholder="Event Title"
@@ -80,8 +80,8 @@ function App() {
               type="text"
               placeholder="Event Location"
               className="input input-bordered w-full max-w-xs"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
             />
             {/* <button  className="btn btn-primary">Add Event</button> */}
           </div>
