@@ -4,7 +4,10 @@ import UpdateEventModal from "./components/UpdateEventModal";
 import ConfirmDeleteModal from "./components/ConfirmDeleteModal";
 import { toast } from "react-toastify";
 
+// localStorage.setItem("events", JSON.stringify(eventsData));
+
 function App() {
+
   const [events, setEvents] = useState([]);
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
@@ -14,9 +17,7 @@ function App() {
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   
-  useEffect(() => {
-    setEvents(eventsData);
-  }, []);
+ 
 
   const handleAddEvent = () => {
     try {
@@ -36,6 +37,7 @@ function App() {
       setDate("");
       setLocation("");
       setDescription("");
+      localStorage.setItem("events", JSON.stringify([...events, newEvent]));
       toast.success("Event added successfully");
     } catch (error) {
       toast.error(error.message);
@@ -46,6 +48,7 @@ function App() {
     try {
       const updatedEvents = events.map(event => event.id === eventId ? updatedEvent : event);
       setEvents(updatedEvents);
+      localStorage.setItem("events", JSON.stringify(updatedEvents));
       toast.success("Event updated successfully");
     } catch (error) {
       toast.error(error.message);
@@ -57,12 +60,17 @@ function App() {
     try {
       const updatedEvents = events.filter(event => event.id !== eventId);
       setEvents(updatedEvents);
+      localStorage.setItem("events", JSON.stringify(updatedEvents));
       toast.success("Event deleted successfully");
     } catch (error) {
       toast.error(error.message);
     }
   }
 
+  useEffect(() => {
+    setEvents(JSON.parse(localStorage.getItem("events")) || eventsData);
+  }, []);
+  
   return (
     <>
       <main>
