@@ -46,4 +46,7 @@
   input[type="text"] {
     @apply p-2 border rounded border-gray-600 bg-gray-700 text-white;
   }
+  input[type="number"] {
+    @apply p-2 border rounded border-gray-600 bg-gray-700 text-white;
+  }
 }
