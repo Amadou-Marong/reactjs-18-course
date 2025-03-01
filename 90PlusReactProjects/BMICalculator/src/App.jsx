@@ -36,7 +36,7 @@ function App() {
     <>
       <main>
         <div className="container center">
-          <div className="flex gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             <form onSubmit={handleSubmit} className="mt-4 form">
               <h1 className="title text-white text-center">BMI Calculator</h1>
               <div className="my-4">

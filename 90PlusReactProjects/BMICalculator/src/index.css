@@ -28,7 +28,7 @@
   }
 
   .form {
-    @apply bg-gray-800 p-4 rounded bg-gray-800 p-4 rounded min-w-96;	
+    @apply bg-gray-800 p-4 rounded min-w-96;	
   }
 
   .form-group {
